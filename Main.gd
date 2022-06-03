@@ -7,8 +7,7 @@ extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,5 +15,6 @@ func _process(delta):
 	$Control/Labels/WeaponCooldown.text = str($Player/WeaponSlot/Weapon/Cooldown.time_left)
 
 
-func _on_Player_spawn_bullet(bullet):
-	$Bullets.add_child(bullet)
+func _on_Player_spawn_bullet(bullets):
+	for bullet in bullets:
+		$Bullets.add_child(bullet)

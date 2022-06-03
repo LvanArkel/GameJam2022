@@ -17,19 +17,20 @@ signal hit
 signal spawn_bullet(bullet)
 
 func _ready():
+	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
 
 func init_weapons():
 	current_weapon = 0
 	var pistol = Weapon.instance()
-	pistol.init("res://assets/sprites/test_gun.png", 0.5, 10)
+	pistol.init("res://assets/sprites/test_gun.png", 0.5, 5, 30)
 	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
-	shotgun.init("res://assets/sprites/test_shotgun.png", 1, 40, 5)
+	shotgun.init("res://assets/sprites/test_shotgun.png", 1, 30, 50, 5)
 	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
-	rifle.init("res://assets/sprites/test_rifle.png", 0.2, 20)
+	rifle.init("res://assets/sprites/test_rifle.png", 0.2, 30, 50)
 	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
 	$WeaponSlot.add_child(weapons[current_weapon])
@@ -72,12 +73,15 @@ func _input(event):
 func shoot(amount, spread):
 	if not $WeaponSlot/Weapon.can_fire():
 		return
-	var bullet = Bullet.instance()
-	var rotation = $WeaponSlot.global_rotation
-	var barrel_length = $WeaponSlot/Weapon.barrel_length
-	bullet.position = $WeaponSlot.global_position + barrel_length*Vector2(cos(rotation), sin(rotation))
-	bullet.rotation = rotation
-	emit_signal("spawn_bullet", bullet)
+	var bullets = []
+	for i in range(amount):
+		var bullet = Bullet.instance()
+		var rotation = $WeaponSlot.global_rotation + spread * deg2rad(randf() - 0.5)
+		var barrel_length = $WeaponSlot/Weapon.barrel_length
+		bullet.position = $WeaponSlot.global_position + barrel_length*Vector2(cos(rotation), sin(rotation))
+		bullet.rotation = rotation
+		bullets.append(bullet)
+	emit_signal("spawn_bullet", bullets)
 	$WeaponSlot/Weapon.shoot_bullet()
 
 

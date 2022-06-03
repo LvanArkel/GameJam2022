@@ -6,12 +6,14 @@ signal fire_weapon(amount, spread)
 var amount
 
 var spread
-var barrel_length = 30
+var barrel_length
 
-func init(texture_path, firing_speed, spread, amount=1):
+func init(texture_path, firing_speed, spread, barrel_length, amount=1):
 	var texture = load(texture_path)
 	$Sprite.texture = texture
 	$Cooldown.wait_time = firing_speed
+	self.spread = spread
+	self.barrel_length = barrel_length
 	self.amount = amount
 	
 func re_init():
