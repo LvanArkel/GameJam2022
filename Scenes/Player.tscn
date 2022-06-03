@@ -15,8 +15,3 @@ position = Vector2( 0, 16 )
 texture = ExtResource( 3 )
 
 [node name="WeaponSlot" type="Node2D" parent="."]
-
-[node name="Pistol" parent="WeaponSlot" instance=ExtResource( 1 )]
-visible = false
-
-[connection signal="fire_weapon" from="WeaponSlot/Pistol" to="." method="_on_Weapon_fire_weapon"]

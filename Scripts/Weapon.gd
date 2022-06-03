@@ -1,19 +1,21 @@
 extends Node2D
 
-signal fire_weapon
+signal fire_weapon(amount, spread)
 
 # Declare member variables here. Examples:
-var cooldown = 0.5
+var amount
 
-var spread = 10
+var spread
 var barrel_length = 30
 
-func init(texture_path):
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load(texture_path)
-	texture.create_from_image(image)
+func init(texture_path, firing_speed, spread, amount=1):
+	var texture = load(texture_path)
 	$Sprite.texture = texture
+	$Cooldown.wait_time = firing_speed
+	self.amount = amount
+	
+func re_init():
+	$Cooldown.start()
 
 # Called when the node enters the scene tree for the first time.
 func can_fire():
@@ -31,4 +33,4 @@ func _on_Cooldown_timeout():
 		shoot()
 
 func shoot():
-	emit_signal("fire_weapon")
+	emit_signal("fire_weapon", amount, spread)

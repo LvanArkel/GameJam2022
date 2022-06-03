@@ -18,6 +18,7 @@ position = Vector2( 196, 123 )
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 16, 16 )
 
 [connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]

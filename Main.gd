@@ -13,8 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Control/WeaponPosition.text = str($Player/WeaponSlot.position)
-	$Control/WeaponRotation.text = str($Player/WeaponSlot.rotation)
+	$Control/Labels/WeaponCooldown.text = str($Player/WeaponSlot/Weapon/Cooldown.time_left)
 
 
 func _on_Player_spawn_bullet(bullet):

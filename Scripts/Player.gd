@@ -3,11 +3,14 @@ extends Node2D
 export (PackedScene) var Bullet
 export (PackedScene) var Weapon
 
-var weapons
 
-# variables
+# constants
 export var speed = 500
 var screen_size
+
+# variables
+var weapons
+var current_weapon
 
 # signals
 signal hit
@@ -18,14 +21,18 @@ func _ready():
 	init_weapons()
 
 func init_weapons():
+	current_weapon = 0
 	var pistol = Weapon.instance()
-	pistol.init("res://assets/sprites/test_gun.png")
+	pistol.init("res://assets/sprites/test_gun.png", 0.5, 10)
+	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
-	shotgun.init("res://assets/sprites/test_shotgun.png")
+	shotgun.init("res://assets/sprites/test_shotgun.png", 1, 40, 5)
+	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
-	rifle.init("res://assets/sprites/test_rifle.png")
+	rifle.init("res://assets/sprites/test_rifle.png", 0.2, 20)
+	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
-	$WeaponSlot.add_child(weapons[0])
+	$WeaponSlot.add_child(weapons[current_weapon])
 
 func _process(delta):
 	$WeaponSlot.look_at(get_global_mouse_position())	
@@ -56,8 +63,19 @@ func _on_Player_body_entered(body):
 	emit_signal("hit")
 	$CollisionShape.set_deferred("disabled", true)
 
+func _input(event):
+	if event.is_action_pressed("scroll_forward"):
+		current_weapon = (current_weapon + 1) % len(weapons)
+	elif event.is_action_pressed("scroll_backward"):
+		current_weapon = (current_weapon - 1) % len(weapons)
+	else:
+		return
+	print("Switching to " + str(current_weapon))	
+	var weapon = $WeaponSlot/Weapon
+	$WeaponSlot.remove_child(weapon)
+	$WeaponSlot.add_child(weapons[current_weapon])
 
-func shoot():
+func shoot(amount, spread):
 	if not $WeaponSlot/Weapon.can_fire():
 		return
 	var bullet = Bullet.instance()
@@ -70,5 +88,5 @@ func shoot():
 
 
 
-func _on_Weapon_fire_weapon():
-	shoot()
+func _on_Weapon_fire_weapon(amount, spread):
+	shoot(amount, spread)
