@@ -1,9 +1,9 @@
-extends Node2D
+extends KinematicBody2D
 
 export (PackedScene) var Bullet
 
 # variables
-export var speed = 500
+export var speed = 250
 var screen_size
 
 # signals
@@ -15,28 +15,22 @@ func _ready():
 
 func _process(delta):
 	$WeaponSlot.look_at(get_global_mouse_position())	
-	
-	var velocity = Vector2.ZERO # The player's movement vector.
+
+
+func _physics_process(delta):
+	var velocity = Vector2.ZERO # The player's movement vector.	
 	
 	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+		velocity.x += speed
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		velocity.x -= speed
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
+		velocity.y += speed
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+		velocity.y -= speed
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		#$AnimatedSprite.play()
-	else:
-		pass
-		#$AnimatedSprite.stop()
-		
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	move_and_slide(velocity)
+
 
 func _on_Player_body_entered(body):
 	emit_signal("hit")
