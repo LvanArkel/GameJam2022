@@ -8,8 +8,12 @@ var cooldown = 0.5
 var spread = 10
 var barrel_length = 30
 
-#func _init(weapon_texture):
-#	$Sprite.texture = weapon_texture
+func init(texture_path):
+	var texture = ImageTexture.new()
+	var image = Image.new()
+	image.load(texture_path)
+	texture.create_from_image(image)
+	$Sprite.texture = texture
 
 # Called when the node enters the scene tree for the first time.
 func can_fire():

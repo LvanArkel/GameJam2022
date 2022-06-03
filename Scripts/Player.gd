@@ -1,6 +1,9 @@
 extends Node2D
 
 export (PackedScene) var Bullet
+export (PackedScene) var Weapon
+
+var weapons
 
 # variables
 export var speed = 500
@@ -12,6 +15,17 @@ signal spawn_bullet(bullet)
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	init_weapons()
+
+func init_weapons():
+	var pistol = Weapon.instance()
+	pistol.init("res://assets/sprites/test_gun.png")
+	var shotgun = Weapon.instance()
+	shotgun.init("res://assets/sprites/test_shotgun.png")
+	var rifle = Weapon.instance()
+	rifle.init("res://assets/sprites/test_rifle.png")
+	weapons = [pistol, shotgun, rifle]
+	$WeaponSlot.add_child(weapons[0])
 
 func _process(delta):
 	$WeaponSlot.look_at(get_global_mouse_position())	
@@ -41,7 +55,6 @@ func _process(delta):
 func _on_Player_body_entered(body):
 	emit_signal("hit")
 	$CollisionShape.set_deferred("disabled", true)
-
 
 
 func shoot():
