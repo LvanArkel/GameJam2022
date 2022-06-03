@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/test_bullet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 10.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 2 )
+bullet_speed = 400
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
