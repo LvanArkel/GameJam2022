@@ -2,17 +2,45 @@ extends Node2D
 
 export (PackedScene) var Bullet
 
+# variables
+export var speed = 500
+var screen_size
+
+# signals
+signal hit
 signal spawn_bullet(bullet)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	screen_size = get_viewport_rect().size
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$WeaponSlot.look_at(get_global_mouse_position())
+	$WeaponSlot.look_at(get_global_mouse_position())	
+	
+	var velocity = Vector2.ZERO # The player's movement vector.
+	
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		#$AnimatedSprite.play()
+	else:
+		pass
+		#$AnimatedSprite.stop()
+		
+	position += velocity * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+
+func _on_Player_body_entered(body):
+	emit_signal("hit")
+	$CollisionShape.set_deferred("disabled", true)
 
 
 
