@@ -3,10 +3,11 @@ extends Node2D
 signal fire_weapon(amount, spread)
 
 # Declare member variables here. Examples:
-var amount
-
+var fire_amount
 var spread
 var barrel_length
+
+var ammo
 
 func init(texture_path, firing_speed, spread, barrel_length, amount=1):
 	var texture = load(texture_path)
@@ -14,7 +15,9 @@ func init(texture_path, firing_speed, spread, barrel_length, amount=1):
 	$Cooldown.wait_time = firing_speed
 	self.spread = spread
 	self.barrel_length = barrel_length
-	self.amount = amount
+	self.fire_amount = amount
+	
+	self.ammo = 7
 	
 func re_init():
 	$Cooldown.start()
@@ -35,4 +38,7 @@ func _on_Cooldown_timeout():
 		shoot()
 
 func shoot():
-	emit_signal("fire_weapon", amount, spread)
+	if self.ammo <= 0:
+		return
+	emit_signal("fire_weapon", min(fire_amount, ammo), spread)
+	self.ammo -= min(fire_amount, ammo)
