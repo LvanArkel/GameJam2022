@@ -11,3 +11,14 @@ func _physics_process(delta):
 
 func _on_Lifetime_timeout():
 	queue_free()
+
+
+func _on_Bullet_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	# add logic for damaging enemies
+	
+	if body.is_in_group("Player"):
+		print("Bullet collision with player")
+		return
+	
+	$CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
