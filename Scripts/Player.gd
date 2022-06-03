@@ -14,9 +14,7 @@ func _ready():
 func _process(delta):
 	$WeaponSlot.look_at(get_global_mouse_position())
 
-func _input(event):
-	if event.is_action_pressed("action"):
-		shoot()
+
 
 func shoot():
 	if not $WeaponSlot/Weapon.can_fire():
@@ -29,3 +27,7 @@ func shoot():
 	emit_signal("spawn_bullet", bullet)
 	$WeaponSlot/Weapon.shoot_bullet()
 
+
+
+func _on_Weapon_fire_weapon():
+	shoot()

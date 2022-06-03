@@ -16,3 +16,5 @@ texture = ExtResource( 3 )
 [node name="WeaponSlot" type="Node2D" parent="."]
 
 [node name="Weapon" parent="WeaponSlot" instance=ExtResource( 1 )]
+
+[connection signal="fire_weapon" from="WeaponSlot/Weapon" to="." method="_on_Weapon_fire_weapon"]
