@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/UI/test_hudbox.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Hud.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/UI/test_bullet_image.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/UI/rifle_ammo.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/UI/shotgun_ammo.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/UI/pistol_ammo.png" type="Texture" id=5]
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -57,7 +59,7 @@ margin_bottom = 50.0
 [node name="PistolAmmoImage" type="TextureRect" parent="Cols/Row2"]
 margin_right = 16.0
 margin_bottom = 32.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="PistolAmmoLabel" type="Label" parent="Cols/Row2"]
 margin_left = 20.0
@@ -71,7 +73,7 @@ text = "=0"
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 32.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="ShotgunAmmoLabel" type="Label" parent="Cols/Row2"]
 margin_left = 60.0
