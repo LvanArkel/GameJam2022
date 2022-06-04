@@ -26,7 +26,8 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
-
+	money = 40
+	health = 5
 
 func init_weapons():
 	current_weapon = 0
@@ -113,8 +114,15 @@ func update_hud():
 	var ammos = [weapons[0].ammo, weapons[1].ammo, weapons[2].ammo]
 	hud.update_player_info(money, health, current_weapon, ammos)
 	
+func damage(amount):
+	if $Timer.is_stopped():
+		health -= amount
+		update_hud()
+		$Timer.start()
 	
-
+func die():
+	print("Player died")
+	pass
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)

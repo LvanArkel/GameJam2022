@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export (int) var speed = 100
 export (int) var health = 3
+export (int) var attack_length = 100
+export (int) var damage = 1
 
 onready var nav: Navigation2D = get_node(@"/root/Main/NavMesh")
 onready var player = get_node(@"../../Player")
@@ -27,15 +29,17 @@ func _process(delta):
 	
 	move_along_path(walk_distance)
 	
+func attack():
+	var dist = player.position.distance_to(position)
+	
+	if dist < attack_length:
+		player.damage(damage)
 	
 func move_along_path(distance):
 	var last_point = position
 	while path.size():
-		#if path.size() == 2:
-		#	var distance_to_player = player.position.distance_to(path[1])
-		#	if distance_to_player < 10:
-		#		continue
-
+		attack()
+		
 		var distance_between_points = last_point.distance_to(path[0])
 
 		# The position to move to falls between two points.
