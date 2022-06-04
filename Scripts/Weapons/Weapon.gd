@@ -19,7 +19,7 @@ func init_texture(texture_path, texture_scale, muzzle_position):
 	var texture = load(texture_path)
 	$Sprite.texture = texture
 	$Sprite.scale = texture_scale*Vector2(1,1)
-	$Muzzle.position = muzzle_position
+	$Muzzle.position = muzzle_position + $Sprite.position
 	
 func re_init():
 	$Cooldown.start()
