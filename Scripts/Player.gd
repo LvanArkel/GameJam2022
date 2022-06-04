@@ -139,3 +139,12 @@ func _on_store_body_exited(body):
 	if body.is_in_group("Player"):
 		can_buy = false
 		$PurchaseSprite.visible = can_buy
+
+
+func _on_ChaosController_remove_data(type, amount):
+	print(type, amount)
+	if type == 3:
+		money = max(0, money-amount)
+	else:
+		weapons[type].ammo = max(0, weapons[type].ammo-amount)
+	update_hud()

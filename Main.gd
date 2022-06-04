@@ -15,4 +15,5 @@ func _process(delta):
 
 func _on_Player_spawn_bullet(bullets):
 	for bullet in bullets:
+		bullet.bullet_speed = $Bullets.get_bullet_speed()
 		$Bullets.add_child(bullet)
