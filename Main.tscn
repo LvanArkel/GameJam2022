@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=10 format=2]
-=======
 [gd_scene load_steps=11 format=2]
->>>>>>> fa931ba09a113abae1a80b16074d03a2fb346d30
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -11,12 +7,9 @@
 [ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=7]
-<<<<<<< HEAD
 [ext_resource path="res://Scenes/WaveController.tscn" type="PackedScene" id=8]
-=======
 [ext_resource path="res://Scenes/ChaosController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Weapons/BulletController.gd" type="Script" id=9]
->>>>>>> fa931ba09a113abae1a80b16074d03a2fb346d30
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1568, 288, 1440, 576, 1280, 576, 1088, 544, 1088, 192, 1280, 32, 1568, 32, 512, 608, 160, 608, 160, 512, 384, 320, 160, 736, 160, 640, 512, 640, 512, 736, 1568, 1088, 1312, 1088, 1440, 608, 1312, 608, 1280, 864, 1024, 864, 1024, 672, 704, 544, 992, 672, 992, 864, 800, 864, 800, 672, 768, 672, 352, 128, 352, 288, 32, 288, 32, 32, 512, 32, 384, 128, 32, 320, 128, 512, 32, 864, 128, 736, 768, 864, 544, 736, 544, 32, 704, 192 )
@@ -30,14 +23,8 @@ script = ExtResource( 2 )
 position = Vector2( 1432, 1000 )
 
 [node name="Bullets" type="Node2D" parent="."]
-<<<<<<< HEAD
-__meta__ = {
-"_edit_lock_": true
-}
-=======
 script = ExtResource( 9 )
 totalSpeed = 400.0
->>>>>>> fa931ba09a113abae1a80b16074d03a2fb346d30
 
 [node name="Enemies" type="Node2D" parent="."]
 __meta__ = {
@@ -99,9 +86,7 @@ anchor_bottom = 0.0
 margin_right = 1600.0
 margin_bottom = 900.0
 
-<<<<<<< HEAD
 [connection signal="next_wave" from="WaveController" to="." method="_on_WaveController_next_wave"]
-=======
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
 color = Color( 0.207843, 0.341176, 0.0196078, 1 )
@@ -112,7 +97,6 @@ format = 1
 
 [node name="ChaosController" parent="." instance=ExtResource( 8 )]
 
->>>>>>> fa931ba09a113abae1a80b16074d03a2fb346d30
 [connection signal="body_entered" from="Stores/store" to="Player" method="_on_store_body_entered"]
 [connection signal="body_exited" from="Stores/store" to="Player" method="_on_store_body_exited"]
 [connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]
