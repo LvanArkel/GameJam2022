@@ -15,8 +15,12 @@ var weapons
 # variables
 var current_weapon
 var can_buy
+<<<<<<< HEAD
 export (int) var money
 export (int) var health
+=======
+var health
+>>>>>>> baf9360 (Add health)
 
 # signals
 signal hit
@@ -26,7 +30,12 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
+<<<<<<< HEAD
 
+=======
+	money = 40
+	health = 5
+>>>>>>> baf9360 (Add health)
 
 func init_weapons():
 	current_weapon = 0
@@ -115,8 +124,8 @@ func update_hud():
 	var ammos = [weapons[0].ammo, weapons[1].ammo, weapons[2].ammo]
 	hud.update_player_info(money, health, current_weapon, ammos)
 	
-	
-
+func damage(amount):
+	health -= amount
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
