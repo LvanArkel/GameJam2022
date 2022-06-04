@@ -18,7 +18,10 @@ func _on_Bullet_body_shape_entered(body_rid, body, body_shape_index, local_shape
 	
 	if body.is_in_group("Player"):
 		# no friendly fire in a single player game lmao
-		return
+		return	
+	elif body.is_in_group("Enemy"):
+		body.take_damage(1)
+		# queue blood particle system
 	
 	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
