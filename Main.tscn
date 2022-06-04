@@ -68,7 +68,7 @@ __meta__ = {
 position = Vector2( 256, 320 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 170, 148 )
+position = Vector2( 196, 123 )
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
 anchor_left = 1.0
@@ -76,6 +76,13 @@ anchor_bottom = 0.0
 margin_right = 1600.0
 margin_bottom = 900.0
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.207843, 0.341176, 0.0196078, 1 )
+polygon = PoolVector2Array( 0, 0, 1600, 0, 1600, 896, 0, 896 )
+
+[node name="TileMap2" type="TileMap" parent="Polygon2D"]
+tile_set = ExtResource( 8 )
 [node name="ChaosController" parent="." instance=ExtResource( 8 )]
 
 [connection signal="body_entered" from="Stores/store" to="Player" method="_on_store_body_entered"]
