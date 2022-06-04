@@ -15,11 +15,11 @@ outlines = [ PoolVector2Array( 32, 32, 32, 288, 352, 288, 352, 128, 384, 128, 38
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Bullets" type="Node" parent="."]
+[node name="Bullets" type="Node2D" parent="."]
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Coins" type="Node" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 3 )]
 position = Vector2( 442, 91 )
@@ -48,7 +48,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Stores" type="Node" parent="."]
+[node name="Stores" type="Node2D" parent="."]
 
 [node name="store" parent="Stores" instance=ExtResource( 6 )]
 position = Vector2( 256, 320 )
