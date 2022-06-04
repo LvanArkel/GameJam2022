@@ -1,34 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tilemaps/tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1440, 288, 1440, 576, 1280, 576, 1088, 544, 1088, 192, 1280, 160, 1472, 288, 1472, 128, 1568, 32, 1568, 864, 544, 32, 1280, 128, 512, 608, 160, 608, 160, 512, 384, 320, 160, 736, 160, 640, 512, 640, 512, 736, 1440, 160, 1312, 864, 1312, 608, 1440, 608, 1280, 864, 1024, 864, 1024, 672, 704, 544, 992, 672, 992, 864, 800, 864, 800, 672, 768, 672, 352, 128, 352, 288, 32, 288, 32, 32, 512, 32, 384, 128, 32, 320, 128, 512, 32, 864, 128, 736, 768, 864, 544, 736, 704, 192 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 10, 8, 7, 11 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 16, 17, 18, 19 ), PoolIntArray( 5, 20, 0 ), PoolIntArray( 9, 21, 22, 23 ), PoolIntArray( 6, 9, 23, 1 ), PoolIntArray( 0, 6, 1 ), PoolIntArray( 2, 24, 25, 26, 3 ), PoolIntArray( 27, 3, 26, 28 ), PoolIntArray( 28, 29, 30, 31 ), PoolIntArray( 27, 28, 31 ), PoolIntArray( 27, 31, 32 ), PoolIntArray( 33, 34, 35, 36 ), PoolIntArray( 33, 36, 37, 38 ), PoolIntArray( 38, 37, 12, 15 ), PoolIntArray( 39, 15, 14, 40 ), PoolIntArray( 41, 39, 40, 42 ), PoolIntArray( 43, 41, 42, 16 ), PoolIntArray( 43, 16, 19 ), PoolIntArray( 43, 19, 44 ), PoolIntArray( 32, 43, 44, 27 ), PoolIntArray( 27, 44, 10, 45 ), PoolIntArray( 4, 45, 10, 11, 5 ) ]
 outlines = [ PoolVector2Array( 32, 32, 32, 288, 352, 288, 352, 128, 384, 128, 384, 320, 32, 320, 32, 864, 768, 864, 768, 672, 800, 672, 800, 864, 992, 864, 992, 672, 1024, 672, 1024, 864, 1280, 864, 1280, 576, 1440, 576, 1440, 608, 1312, 608, 1312, 864, 1568, 864, 1568, 32, 544, 32, 544, 736, 512, 736, 512, 640, 160, 640, 160, 736, 128, 736, 128, 512, 160, 512, 160, 608, 512, 608, 512, 32 ), PoolVector2Array( 704, 192, 1088, 192, 1088, 544, 704, 544 ), PoolVector2Array( 1280, 160, 1440, 160, 1440, 288, 1472, 288, 1472, 128, 1280, 128 ) ]
-[ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Bullets" type="Node2D" parent="."]
+[node name="Bullets" type="Node" parent="."]
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 1328, 413 )
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 928, 128 )
-
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
-position = Vector2( 196, 123 )
-[node name="Coins" type="Node2D" parent="."]
+[node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 3 )]
 position = Vector2( 442, 91 )
@@ -57,7 +48,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Stores" type="Node2D" parent="."]
+[node name="Stores" type="Node" parent="."]
 
 [node name="store" parent="Stores" instance=ExtResource( 6 )]
 position = Vector2( 256, 320 )
@@ -66,6 +57,8 @@ position = Vector2( 256, 320 )
 position = Vector2( 196, 123 )
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
 margin_right = 1600.0
 margin_bottom = 900.0
 
