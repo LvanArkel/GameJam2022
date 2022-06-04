@@ -1,19 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/test_player.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/test/test_player.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Weapons/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/test/test_purchase_icon.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
 height = 32.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 Bullet = ExtResource( 4 )
 Weapon = ExtResource( 1 )
 
@@ -26,3 +24,8 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 16 )
 shape = SubResource( 1 )
+
+[node name="PurchaseSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, -30 )
