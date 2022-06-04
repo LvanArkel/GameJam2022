@@ -44,12 +44,10 @@ margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "$ 42"
 
-[node name="Lives" type="Label" parent="Cols/Row1"]
+[node name="Lives" type="HBoxContainer" parent="Cols/Row1"]
 margin_left = 32.0
-margin_right = 81.0
+margin_right = 32.0
 margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Lives=3"
 
 [node name="Row2" type="HBoxContainer" parent="Cols"]
 margin_top = 18.0

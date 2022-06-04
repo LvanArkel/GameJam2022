@@ -14,8 +14,9 @@ var weapons
 
 # variables
 var current_weapon
-var money
 var can_buy
+export (int) var money
+export (int) var health
 
 # signals
 signal hit
@@ -25,7 +26,7 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
-	money = 40
+
 
 func init_weapons():
 	current_weapon = 0
@@ -82,7 +83,7 @@ func _input(event):
 			money -= 10
 			weapons[current_weapon].ammo += 10
 			update_hud()
-	
+
 func switch_weapon(delta):
 	current_weapon = (current_weapon + delta) % len(weapons)
 	print("Switching to " + str(current_weapon))
@@ -112,7 +113,7 @@ func update_hud():
 	if hud == null:
 		return
 	var ammos = [weapons[0].ammo, weapons[1].ammo, weapons[2].ammo]
-	hud.update_player_info(money, 0, current_weapon, ammos)
+	hud.update_player_info(money, health, current_weapon, ammos)
 	
 	
 

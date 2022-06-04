@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/worm_tail.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/worm_head.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Enemies/Worm.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 47.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 58.0
+height = 24.0
+
+[node name="Worm" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TailKinematic" type="KinematicBody2D" parent="."]
+position = Vector2( 100, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailKinematic"]
+position = Vector2( -6, 7 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="TailSprite" type="Sprite" parent="TailKinematic"]
+texture = ExtResource( 1 )
+
+[node name="HeadKinematic" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadKinematic"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="HeadSprite" type="Sprite" parent="HeadKinematic"]
+texture = ExtResource( 2 )
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../HeadKinematic")
+node_b = NodePath("../TailKinematic")
