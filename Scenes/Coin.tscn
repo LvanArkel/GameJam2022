@@ -4,6 +4,7 @@
 [ext_resource path="res://Scripts/Coin.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 18.0278
 
 [node name="Coin" type="Area2D" groups=["Coin"]]
 script = ExtResource( 2 )
