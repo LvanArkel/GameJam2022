@@ -14,7 +14,6 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()
 	line = Line2D.new()
 	line.width = 1
 	line.default_color = Color.red
