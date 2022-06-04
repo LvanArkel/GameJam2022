@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/rifle.png-933b373a4d850bd7f1c03049a576b2a1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/sprites/IA_coin.png"
+source_file="res://assets/sprites/rifle.png"
+dest_files=[ "res://.import/rifle.png-933b373a4d850bd7f1c03049a576b2a1.stex" ]
+
 [params]
 
 compress/mode=0
@@ -15,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

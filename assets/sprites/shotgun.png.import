@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/shotgun.png-3d690cce80c287ed9f690e285ff601be.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/sprites/IA_coin.png"
+source_file="res://assets/sprites/shotgun.png"
+dest_files=[ "res://.import/shotgun.png-3d690cce80c287ed9f690e285ff601be.stex" ]
+
 [params]
 
 compress/mode=0
@@ -15,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
