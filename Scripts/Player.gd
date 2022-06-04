@@ -93,8 +93,6 @@ func switch_weapon(delta):
 	update_hud()
 
 func shoot(amount, spread):
-	if not $WeaponSlot/Weapon.can_fire():
-		return
 	var bullets = []
 	for i in range(amount):
 		var bullet = Bullet.instance()

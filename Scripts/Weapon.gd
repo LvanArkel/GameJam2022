@@ -10,6 +10,7 @@ var ammo
 
 func init(firing_speed, spread, amount=1):
 	$Cooldown.wait_time = firing_speed
+	$Cooldown.start()
 	self.spread = spread
 	self.fire_amount = amount
 	self.ammo = 20
@@ -23,10 +24,6 @@ func init_texture(texture_path, texture_scale, muzzle_position):
 func re_init():
 	$Cooldown.start()
 
-# Called when the node enters the scene tree for the first time.
-func can_fire():
-	return $Cooldown.is_stopped()
-
 func _input(event):
 	if event.is_action_pressed("action"):
 		shoot()
@@ -36,6 +33,8 @@ func _on_Cooldown_timeout():
 		shoot()
 
 func shoot():
+	if not $Cooldown.is_stopped():
+		return
 	if self.ammo <= 0:
 		return
 	var firing_amount = min(fire_amount, ammo)
