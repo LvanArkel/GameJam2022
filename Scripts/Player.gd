@@ -31,21 +31,26 @@ func init_weapons():
 	current_weapon = 0
 	var pistol = Weapon.instance()
 	pistol.init(0.5, 5)
-	pistol.init_texture("res://assets/sprites/pistol.png", 0.4, Vector2(0,0))
+	pistol.init_texture("res://assets/sprites/pistol.png", 0.4, Vector2(23,-5))
 	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
 	shotgun.init(1, 30, 5)
-	shotgun.init_texture("res://assets/sprites/shotgun.png", 1, Vector2(0,0))
+	shotgun.init_texture("res://assets/sprites/shotgun.png", 1, Vector2(60,-5))
 	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
 	rifle.init(0.2, 30)
-	rifle.init_texture("res://assets/sprites/rifle.png", 1, Vector2(0,0))
+	rifle.init_texture("res://assets/sprites/rifle.png", 1, Vector2(60,-4))
 	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
 	$WeaponSlot.add_child(weapons[current_weapon])
 
 func _process(delta):
-	$WeaponSlot.look_at(get_global_mouse_position())	
+	$WeaponSlot.look_at(get_global_mouse_position())
+	var weaponRotation = fmod($WeaponSlot.rotation_degrees+360.0, 360.0)
+	if weaponRotation > 90 and weaponRotation < 270:
+		$WeaponSlot.scale = Vector2(1,-1)
+	else:
+		$WeaponSlot.scale = Vector2(1,1)
 
 
 func _physics_process(delta):
