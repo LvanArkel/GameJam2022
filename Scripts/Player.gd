@@ -39,11 +39,11 @@ func init_weapons():
 	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
 	shotgun.init(1, 30, 5)
-	shotgun.init_texture("res://assets/sprites/shotgun.png", 1, Vector2(60,-5))
+	shotgun.init_texture("res://assets/sprites/shotgun.png", 0.8, Vector2(45,-3))
 	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
 	rifle.init(0.2, 30)
-	rifle.init_texture("res://assets/sprites/rifle.png", 1, Vector2(60,-4))
+	rifle.init_texture("res://assets/sprites/rifle.png", 0.8, Vector2(45,-2))
 	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
 	$WeaponSlot.add_child(weapons[current_weapon])
@@ -55,6 +55,14 @@ func _process(delta):
 		$WeaponSlot.scale = Vector2(1,-1)
 	else:
 		$WeaponSlot.scale = Vector2(1,1)
+	if weaponRotation < 45 or weaponRotation > 315:
+		$Sprite.animation = "Right"
+	elif weaponRotation < 135:
+		$Sprite.animation = "Down"
+	elif weaponRotation < 225:
+		$Sprite.animation = "Left"
+	else:
+		$Sprite.animation = "Up"
 
 
 func _physics_process(delta):
@@ -68,6 +76,12 @@ func _physics_process(delta):
 		velocity.y += speed
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= speed
+	
+	if velocity != Vector2.ZERO:
+		$Sprite.playing = true
+	else:
+		$Sprite.playing = false
+		$Sprite.frame = 0
 
 	move_and_slide(velocity)
 
@@ -141,3 +155,12 @@ func _on_store_body_exited(body):
 	if body.is_in_group("Player"):
 		can_buy = false
 		$PurchaseSprite.visible = can_buy
+
+
+func _on_ChaosController_remove_data(type, amount):
+	print(type, amount)
+	if type == 3:
+		money = max(0, money-amount)
+	else:
+		weapons[type].ammo = max(0, weapons[type].ammo-amount)
+	update_hud()
