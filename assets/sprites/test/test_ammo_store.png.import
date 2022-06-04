@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_player.png-2e3d2f1aeff2cac8c0061abe0f14a465.stex"
+path="res://.import/test_ammo_store.png-43d45f342d688f442975d3323230c2e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/test_player.png"
-dest_files=[ "res://.import/test_player.png-2e3d2f1aeff2cac8c0061abe0f14a465.stex" ]
+source_file="res://assets/sprites/test/test_ammo_store.png"
+dest_files=[ "res://.import/test_ammo_store.png-43d45f342d688f442975d3323230c2e1.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
