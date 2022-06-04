@@ -1,10 +1,7 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export (int) var speed = 100
+export (int) var health = 3
 
 onready var nav: Navigation2D = get_node(@"/root/Main/NavMesh")
 onready var player = get_node(@"../../Player")
@@ -34,10 +31,10 @@ func _process(delta):
 func move_along_path(distance):
 	var last_point = position
 	while path.size():
-		if path.size() == 2:
-			var distance_to_player = player.position.distance_to(path[1])
-			if distance_to_player < 10:
-				continue
+		#if path.size() == 2:
+		#	var distance_to_player = player.position.distance_to(path[1])
+		#	if distance_to_player < 10:
+		#		continue
 
 		var distance_between_points = last_point.distance_to(path[0])
 
@@ -61,3 +58,17 @@ func _update_navigation_path(start_position, end_position):
 	path.remove(0)
 	
 	set_process(true)
+
+func take_damage(amount):
+	health -= amount
+	
+	if health <= 0:
+		die()
+
+
+func die():
+	queue_free()
+	
+
+func _on_Enemy_bullet_hit():
+	print("Got hit by a bullet!")
