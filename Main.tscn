@@ -74,3 +74,4 @@ margin_bottom = 900.0
 
 [connection signal="body_entered" from="Stores/store" to="Player" method="_on_store_body_entered"]
 [connection signal="body_exited" from="Stores/store" to="Player" method="_on_store_body_exited"]
+[connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]
