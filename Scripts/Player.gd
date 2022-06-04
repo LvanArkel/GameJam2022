@@ -15,12 +15,8 @@ var weapons
 # variables
 var current_weapon
 var can_buy
-<<<<<<< HEAD
 export (int) var money
 export (int) var health
-=======
-var health
->>>>>>> baf9360 (Add health)
 
 # signals
 signal hit
@@ -30,12 +26,8 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
-<<<<<<< HEAD
-
-=======
 	money = 40
 	health = 5
->>>>>>> baf9360 (Add health)
 
 func init_weapons():
 	current_weapon = 0
@@ -125,7 +117,14 @@ func update_hud():
 	hud.update_player_info(money, health, current_weapon, ammos)
 	
 func damage(amount):
-	health -= amount
+	if $Timer.is_stopped():
+		health -= amount
+		update_hud()
+		$Timer.start()
+	
+func die():
+	print("Player died")
+	pass
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
