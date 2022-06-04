@@ -17,7 +17,7 @@ func init(texture_path, firing_speed, spread, barrel_length, amount=1):
 	self.barrel_length = barrel_length
 	self.fire_amount = amount
 	
-	self.ammo = 7
+	self.ammo = 20
 	
 func re_init():
 	$Cooldown.start()
@@ -25,9 +25,6 @@ func re_init():
 # Called when the node enters the scene tree for the first time.
 func can_fire():
 	return $Cooldown.is_stopped()
-
-func shoot_bullet():
-	$Cooldown.start()
 
 func _input(event):
 	if event.is_action_pressed("action"):
@@ -40,5 +37,7 @@ func _on_Cooldown_timeout():
 func shoot():
 	if self.ammo <= 0:
 		return
-	emit_signal("fire_weapon", min(fire_amount, ammo), spread)
-	self.ammo -= min(fire_amount, ammo)
+	var firing_amount = min(fire_amount, ammo)
+	self.ammo -= firing_amount
+	emit_signal("fire_weapon", firing_amount, spread)
+	$Cooldown.start()

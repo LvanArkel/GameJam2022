@@ -8,6 +8,8 @@ export (PackedScene) var Weapon
 export var speed = 150
 var screen_size
 
+var hud
+
 # variables
 var weapons
 var current_weapon
@@ -82,8 +84,17 @@ func shoot(amount, spread):
 		bullet.rotation = rotation
 		bullets.append(bullet)
 	emit_signal("spawn_bullet", bullets)
-	$WeaponSlot/Weapon.shoot_bullet()
-
+	update_hud()
+	
+func update_hud():
+	if hud == null:
+		return
+	var first_row = hud.get_node("Cols").get_node("Row1")
+	var second_row = hud.get_node("Cols").get_node("Row2")
+	second_row.get_node("PistolAmmoLabel").text = "= " + str(weapons[0].ammo)
+	second_row.get_node("ShotgunAmmoLabel").text = "= " + str(weapons[1].ammo)
+	second_row.get_node("RifleAmmoLabel").text = "= " + str(weapons[2].ammo)
+	
 
 
 func _on_Weapon_fire_weapon(amount, spread):

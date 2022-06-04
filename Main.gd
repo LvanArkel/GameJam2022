@@ -1,13 +1,16 @@
 extends Node2D
 
-
+func _ready():
+	$Player.hud = $Hud
+	$Player.update_hud()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Control/Labels/WeaponCooldown.text = str($Player/WeaponSlot/Weapon/Cooldown.time_left)
-	$Control/Labels/PistolAmmo.text = "Pistol: " + str($Player.weapons[0].ammo)
-	$Control/Labels/ShotgunAmmo.text = "Shotgun: " + str($Player.weapons[1].ammo)
-	$Control/Labels/RifleAmmo.text = "Rifle: " + str($Player.weapons[2].ammo)
+	#$DebugHud/Labels/WeaponCooldown.text = str($Player/WeaponSlot/Weapon/Cooldown.time_left)
+	#DebugHud/Labels/PistolAmmo.text = "Pistol: " + str($Player.weapons[0].ammo)
+	#$DebugHud/Labels/ShotgunAmmo.text = "Shotgun: " + str($Player.weapons[1].ammo)
+	#$DebugHud/Labels/RifleAmmo.text = "Rifle: " + str($Player.weapons[2].ammo)
+	pass
 
 
 func _on_Player_spawn_bullet(bullets):
