@@ -5,19 +5,20 @@ signal fire_weapon(amount, spread)
 # Declare member variables here. Examples:
 var fire_amount
 var spread
-var barrel_length
 
 var ammo
 
-func init(texture_path, firing_speed, spread, barrel_length, amount=1):
-	var texture = load(texture_path)
-	$Sprite.texture = texture
+func init(firing_speed, spread, amount=1):
 	$Cooldown.wait_time = firing_speed
 	self.spread = spread
-	self.barrel_length = barrel_length
 	self.fire_amount = amount
-	
 	self.ammo = 20
+	
+func init_texture(texture_path, texture_scale, muzzle_position):
+	var texture = load(texture_path)
+	$Sprite.texture = texture
+	$Sprite.scale = texture_scale*Vector2(1,1)
+	$Muzzle.position = muzzle_position
 	
 func re_init():
 	$Cooldown.start()

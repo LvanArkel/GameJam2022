@@ -30,13 +30,16 @@ func _ready():
 func init_weapons():
 	current_weapon = 0
 	var pistol = Weapon.instance()
-	pistol.init("res://assets/sprites/test/test_gun.png", 0.5, 5, 30)
+	pistol.init(0.5, 5)
+	pistol.init_texture("res://assets/sprites/pistol.png", 0.4, Vector2(0,0))
 	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
-	shotgun.init("res://assets/sprites/test/test_shotgun.png", 1, 30, 50, 5)
+	shotgun.init(1, 30, 5)
+	shotgun.init_texture("res://assets/sprites/shotgun.png", 1, Vector2(0,0))
 	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
-	rifle.init("res://assets/sprites/test/test_rifle.png", 0.2, 30, 50)
+	rifle.init(0.2, 30)
+	rifle.init_texture("res://assets/sprites/rifle.png", 1, Vector2(0,0))
 	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
 	$WeaponSlot.add_child(weapons[current_weapon])
@@ -90,8 +93,7 @@ func shoot(amount, spread):
 	for i in range(amount):
 		var bullet = Bullet.instance()
 		var rotation = $WeaponSlot.global_rotation + spread * deg2rad(randf() - 0.5)
-		var barrel_length = $WeaponSlot/Weapon.barrel_length
-		bullet.position = $WeaponSlot.global_position + barrel_length*Vector2(cos(rotation), sin(rotation))
+		bullet.position = $WeaponSlot/Weapon/Muzzle.global_position
 		bullet.rotation = rotation
 		bullets.append(bullet)
 	emit_signal("spawn_bullet", bullets)
