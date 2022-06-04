@@ -5,7 +5,7 @@ export (PackedScene) var Weapon
 
 
 # constants
-export var speed = 150
+export var speed = 180
 var screen_size
 
 # variables
