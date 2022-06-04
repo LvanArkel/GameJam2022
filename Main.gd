@@ -30,10 +30,10 @@ func spawn_coin(position):
 
 
 func _on_Enemy_enemy_death(pos):
+	print($Player)
 	spawn_coin(pos)
 	$Player.enemies_left -= 1
 	$Player.update_hud()
-	pass # Replace with function body.
 
 
 func _on_WaveController_next_wave(wave_number, enemies_left):
@@ -41,4 +41,3 @@ func _on_WaveController_next_wave(wave_number, enemies_left):
 	$Player.wave = wave_number
 	$Player.enemies_left = enemies_left
 	$Player.update_hud()
-	pass # Replace with function body.
