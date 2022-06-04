@@ -14,10 +14,13 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	line = Line2D.new()
 	line.width = 1
 	line.default_color = Color.red
 	nav.add_child(line)
+	var c = Color(randf(), randf(), randf())
+	$Sprite.modulate = c
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

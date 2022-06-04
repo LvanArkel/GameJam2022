@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/test/test_player.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/virus_greyscale_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/virus_greyscale_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/virus_greyscale_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/virus_greyscale_4.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 16.0
-height = 32.0
+radius = 20.0
+height = 46.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
 collision_mask = 0
@@ -19,5 +30,9 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 20 )
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
