@@ -12,4 +12,6 @@ offset = Vector2( 16, 0 )
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="Muzzle" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

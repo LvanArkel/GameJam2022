@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_bullet.png-92214f34ab78b25c8850fda385378768.stex"
+path="res://.import/virus_greyscale_3.png-b69c55c24385edc5b96f35d9bd9b17d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/test_bullet.png"
-dest_files=[ "res://.import/test_bullet.png-92214f34ab78b25c8850fda385378768.stex" ]
+source_file="res://assets/sprites/virus_greyscale_3.png"
+dest_files=[ "res://.import/virus_greyscale_3.png-b69c55c24385edc5b96f35d9bd9b17d9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -8,9 +8,14 @@ export (PackedScene) var Weapon
 export var speed = 180
 var screen_size
 
-# variables
+# other game objects
+var hud
 var weapons
+
+# variables
 var current_weapon
+var money
+var can_buy
 
 # signals
 signal hit
@@ -20,17 +25,21 @@ func _ready():
 	randomize()
 	screen_size = get_viewport_rect().size
 	init_weapons()
+	money = 40
 
 func init_weapons():
 	current_weapon = 0
 	var pistol = Weapon.instance()
-	pistol.init("res://assets/sprites/test_gun.png", 0.5, 5, 30)
+	pistol.init(0.5, 5)
+	pistol.init_texture("res://assets/sprites/pistol.png", 0.4, Vector2(0,0))
 	pistol.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var shotgun = Weapon.instance()
-	shotgun.init("res://assets/sprites/test_shotgun.png", 1, 30, 50, 5)
+	shotgun.init(1, 30, 5)
+	shotgun.init_texture("res://assets/sprites/shotgun.png", 1, Vector2(0,0))
 	shotgun.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	var rifle = Weapon.instance()
-	rifle.init("res://assets/sprites/test_rifle.png", 0.2, 30, 50)
+	rifle.init(0.2, 30)
+	rifle.init_texture("res://assets/sprites/rifle.png", 1, Vector2(0,0))
 	rifle.connect("fire_weapon", self, "_on_Weapon_fire_weapon")
 	weapons = [pistol, shotgun, rifle]
 	$WeaponSlot.add_child(weapons[current_weapon])
@@ -60,15 +69,22 @@ func _on_Player_body_entered(body):
 
 func _input(event):
 	if event.is_action_pressed("scroll_forward"):
-		current_weapon = (current_weapon + 1) % len(weapons)
+		switch_weapon(1)
 	elif event.is_action_pressed("scroll_backward"):
-		current_weapon = (current_weapon - 1) % len(weapons)
-	else:
-		return
-	print("Switching to " + str(current_weapon))	
+		switch_weapon(2)
+	elif event.is_action_pressed("interact"):
+		if can_buy and money >= 10:
+			money -= 10
+			weapons[current_weapon].ammo += 10
+			update_hud()
+	
+func switch_weapon(delta):
+	current_weapon = (current_weapon + delta) % len(weapons)
+	print("Switching to " + str(current_weapon))
 	var weapon = $WeaponSlot/Weapon
 	$WeaponSlot.remove_child(weapon)
 	$WeaponSlot.add_child(weapons[current_weapon])
+	update_hud()
 
 func shoot(amount, spread):
 	if not $WeaponSlot/Weapon.can_fire():
@@ -77,14 +93,37 @@ func shoot(amount, spread):
 	for i in range(amount):
 		var bullet = Bullet.instance()
 		var rotation = $WeaponSlot.global_rotation + spread * deg2rad(randf() - 0.5)
-		var barrel_length = $WeaponSlot/Weapon.barrel_length
-		bullet.position = $WeaponSlot.global_position + barrel_length*Vector2(cos(rotation), sin(rotation))
+		bullet.position = $WeaponSlot/Weapon/Muzzle.global_position
 		bullet.rotation = rotation
 		bullets.append(bullet)
 	emit_signal("spawn_bullet", bullets)
-	$WeaponSlot/Weapon.shoot_bullet()
+	update_hud()
 
+func pickup_coin(value):
+	money += value
+	update_hud()
+	
+func update_hud():
+	if hud == null:
+		return
+	var ammos = [weapons[0].ammo, weapons[1].ammo, weapons[2].ammo]
+	hud.update_player_info(money, 0, current_weapon, ammos)
+	
+	
 
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
+	
+
+
+func _on_store_body_entered(body):
+	if body.is_in_group("Player"):
+		can_buy = true
+		$PurchaseSprite.visible = can_buy
+
+
+func _on_store_body_exited(body):
+	if body.is_in_group("Player"):
+		can_buy = false
+		$PurchaseSprite.visible = can_buy
