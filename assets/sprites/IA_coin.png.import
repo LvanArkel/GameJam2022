@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/IA_coin.png-9e5baa0c2fa7c9bffffd7729ee10eaac.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/sprites/IA_coin.png"
+dest_files=[ "res://.import/IA_coin.png-9e5baa0c2fa7c9bffffd7729ee10eaac.stex" ]
+
 [params]
 
 compress/mode=0
