@@ -96,3 +96,25 @@ margin_right = 116.0
 margin_bottom = 23.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "=0"
+
+[node name="Row3" type="HBoxContainer" parent="Cols"]
+margin_top = 54.0
+margin_right = 280.0
+margin_bottom = 68.0
+
+[node name="Wave" type="Label" parent="Cols/Row3"]
+margin_right = 55.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Wave 44"
+
+[node name="Row4" type="HBoxContainer" parent="Cols"]
+margin_top = 72.0
+margin_right = 280.0
+margin_bottom = 86.0
+
+[node name="EnemiesLeft" type="Label" parent="Cols/Row4"]
+margin_right = 88.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Enemies left: "

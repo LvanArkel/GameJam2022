@@ -18,8 +18,10 @@ var can_buy
 export (int) var money
 export (int) var health
 
+var enemies_left
+var wave
+
 # signals
-signal hit
 signal spawn_bullet(bullet)
 
 func _ready():
@@ -112,7 +114,7 @@ func update_hud():
 	if hud == null:
 		return
 	var ammos = [weapons[0].ammo, weapons[1].ammo, weapons[2].ammo]
-	hud.update_player_info(money, health, current_weapon, ammos)
+	hud.update_player_info(money, health, current_weapon, ammos, wave, enemies_left)
 	
 func damage(amount):
 	if $Timer.is_stopped():

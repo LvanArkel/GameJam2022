@@ -13,7 +13,7 @@ func _ready():
 	heart_texture = load("res://assets/sprites/UI/heart.png")
 
 
-func update_player_info(money, lives, active_weapon, ammos):
+func update_player_info(money, lives, active_weapon, ammos, wave, enemies_left):
 	$Cols/Row1/Money.text = "$"+str(money)
 	update_lives(lives)
 	if active_weapon == 0:
@@ -31,6 +31,10 @@ func update_player_info(money, lives, active_weapon, ammos):
 	else:
 		$Cols/Row2/RifleAmmoImage.modulate = unequiped_weapon_color
 	$Cols/Row2/RifleAmmoLabel.text = "= " + str(ammos[2])
+	
+	$Cols/Row3/Wave.text = "Wave " + str(wave)
+	$Cols/Row4/EnemiesLeft.text = "Enemies Left: " + str(enemies_left)
+	
 
 func update_lives(lives):
 	lives = max(lives, 0)

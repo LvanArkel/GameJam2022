@@ -5,6 +5,7 @@ export (int) var health = 3
 export (int) var attack_length = 100
 export (int) var damage = 1
 
+
 onready var nav: Navigation2D = get_node(@"/root/Main/NavMesh")
 onready var player = get_node(@"../../Player")
 
@@ -14,14 +15,15 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	line = Line2D.new()
-	line.width = 1
-	line.default_color = Color.red
-	nav.add_child(line)
+	#line = Line2D.new()
+	#line.width = 1
+	#line.default_color = Color.red
+	#nav.add_child(line)
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	line.points = line_path
+	#line.points = line_path
 	
 	_update_navigation_path(position, player.position)
 	
@@ -66,13 +68,10 @@ func _update_navigation_path(start_position, end_position):
 func take_damage(amount):
 	health -= amount
 	
-	if health <= 0:
+	if health == 0:
 		die()
 
 
 func die():
+	$"/root/Main"._on_Enemy_enemy_death(position)
 	queue_free()
-	
-
-func _on_Enemy_bullet_hit():
-	print("Got hit by a bullet!")
