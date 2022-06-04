@@ -20,10 +20,8 @@ script = ExtResource( 2 )
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
-visible = false
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 411, 749 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 7 )]
@@ -33,7 +31,6 @@ position = Vector2( 1386, 394 )
 position = Vector2( 1146, 641 )
 
 [node name="Coins" type="Node2D" parent="."]
-visible = false
 
 [node name="Coin" parent="Coins" instance=ExtResource( 3 )]
 position = Vector2( 442, 91 )
@@ -42,7 +39,6 @@ position = Vector2( 442, 91 )
 position = Vector2( 75, 380 )
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -53,7 +49,6 @@ __meta__ = {
 }
 
 [node name="NavMesh" type="Navigation2D" parent="."]
-visible = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -65,23 +60,25 @@ __meta__ = {
 }
 
 [node name="Stores" type="Node2D" parent="."]
-visible = false
 
 [node name="store" parent="Stores" instance=ExtResource( 6 )]
 position = Vector2( 256, 320 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-visible = false
 position = Vector2( 196, 123 )
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
-visible = false
 anchor_left = 1.0
 anchor_bottom = 0.0
 margin_right = 1600.0
 margin_bottom = 900.0
 
-[node name="TileMap2" type="TileMap" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.207843, 0.341176, 0.0196078, 1 )
+polygon = PoolVector2Array( 0, 0, 1600, 0, 1600, 896, 0, 896 )
+
+[node name="TileMap2" type="TileMap" parent="Polygon2D"]
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 32, 32 )
 format = 1
