@@ -144,6 +144,7 @@ func damage(amount):
 	if $Timer.is_stopped():
 		health -= amount
 		update_hud()
+		$DmgSound.play()
 		$Timer.start()
 	
 func die():
@@ -152,6 +153,7 @@ func die():
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
+	$GunSound.play()
 	
 
 

@@ -62,6 +62,11 @@ func trigger_chaos(type):
 	$AnimationPlayer.play("ChaosMessage_fadeIn")
 	$ChaosMessageTimer.start(1.5)
 	emit_signal("chaos_modified", chaos_states)
+	var choice = randf()
+	if choice < 0.5:
+		$DebuffSounds/DebuffSound1.play()
+	else:
+		$DebuffSounds/DebuffSound2.play()
 	
 
 func repair_chaos(type):

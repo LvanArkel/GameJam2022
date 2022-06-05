@@ -11,5 +11,5 @@ dest_files=[ "res://.import/debuff_hit1.mp3-15c196553597a03a4d31877941afa828.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
