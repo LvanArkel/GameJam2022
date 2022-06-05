@@ -152,7 +152,7 @@ func damage(amount):
 	
 func die():
 	print("Player died")
-	pass
+	var main = $"/root/Main".show_death_screen()
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
