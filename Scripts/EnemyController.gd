@@ -21,4 +21,6 @@ func _on_ChaosController_update_enemy_texture(e_material, e_visible):
 
 func _on_WaveController_spawn_enemy(enemy):
 	update_enemy(enemy)	
+	#enemy.connect("")
 	add_child(enemy)
+	

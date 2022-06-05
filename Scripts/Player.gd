@@ -155,6 +155,7 @@ func _on_Weapon_fire_weapon(amount, spread):
 
 
 func _on_store_body_entered(body):
+	print("oof")
 	if body.is_in_group("Player"):
 		can_buy = true
 		buy_type = "ammo"
@@ -178,3 +179,4 @@ func _on_ChaosController_remove_data(type, amount):
 
 func _on_ChaosController_freeze_player(duration):
 	$FreezeCooldown.start(duration)
+

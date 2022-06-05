@@ -30,7 +30,6 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
-totalSpeed = 400.0
 
 [node name="CPU_Breakable" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1312, 376 )
