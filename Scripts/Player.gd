@@ -107,6 +107,7 @@ func _input(event):
 			if buy_type == "ammo":
 				weapons[current_weapon].ammo += 10
 			elif buy_type == "chaos":
+				print("repair chaos")
 				emit_signal("repair_chaos", chaos_repair_type)
 			update_hud()
 

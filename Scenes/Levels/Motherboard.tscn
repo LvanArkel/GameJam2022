@@ -1,19 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/ChaosController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/EnemyController.gd" type="Script" id=4]
-[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://Motherboard.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/WaveController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Weapons/BulletController.gd" type="Script" id=7]
 [ext_resource path="res://assets/tilemaps/level1_tileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Breakable.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 1536, 864, 1600, 896, 0, 896, 1440, 864, 160, 864, 32, 864, 0, 0, 32, 736, 1600, 288, 1536, 608, 704, 128, 704, 32, 992, 64, 992, 320, 800, 448, 1312, 320, 1312, 288, 1440, 608, 800, 640, 608, 448, 448, 128, 288, 576, 608, 640, 160, 736, 224, 608, 288, 128, 1280, 0, 1280, 64, 448, 32, 224, 576, 96, 608, 96, 128 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2 ), PoolIntArray( 5, 4, 2 ), PoolIntArray( 5, 2, 6, 7 ), PoolIntArray( 8, 1, 0, 9 ), PoolIntArray( 10, 11, 12, 13, 14 ), PoolIntArray( 15, 16, 8, 9, 17 ), PoolIntArray( 13, 15, 17, 3, 18, 14 ), PoolIntArray( 10, 14, 19, 20 ), PoolIntArray( 21, 19, 22, 4, 23, 24 ), PoolIntArray( 19, 21, 25, 20 ), PoolIntArray( 18, 3, 4, 22 ), PoolIntArray( 26, 27, 12, 11 ), PoolIntArray( 28, 20, 25, 6 ), PoolIntArray( 24, 29, 21 ), PoolIntArray( 30, 24, 23, 7 ), PoolIntArray( 30, 7, 6, 31 ), PoolIntArray( 25, 31, 6 ), PoolIntArray( 28, 6, 26, 11 ) ]
-outlines = [ PoolVector2Array( 96, 128, 288, 128, 288, 576, 224, 576, 224, 608, 96, 608 ), PoolVector2Array( 0, 0, 1280, 0, 1280, 64, 992, 64, 992, 320, 1312, 320, 1312, 288, 1600, 288, 1600, 896, 0, 896 ), PoolVector2Array( 448, 32, 704, 32, 704, 128, 448, 128 ), PoolVector2Array( 608, 448, 800, 448, 800, 640, 608, 640 ), PoolVector2Array( 1440, 864, 1440, 608, 1536, 608, 1536, 864 ), PoolVector2Array( 32, 864, 32, 736, 160, 736, 160, 864 ) ]
+vertices = PoolVector2Array( 160, 864, 608, 800, 1024, 768, 1056, 768, 1440, 864, 0, 896, 576, 800, 320, 800, 576, 768, 1536, 608, 1440, 608, 1376, 544, 1376, 480, 288, 800, 960, 128, 960, 64, 992, 64, 992, 320, 928, 224, 928, 192, 1536, 864, 1600, 896, 32, 864, 576, 480, 576, 448, 608, 448, 608, 640, 0, 0, 32, 736, 1344, 544, 1056, 704, 1024, 704, 896, 640, 896, 608, 864, 320, 416, 288, 896, 224, 1376, 416, 1376, 384, 1600, 288, 1312, 320, 1312, 288, 1344, 384, 448, 32, 448, 128, 416, 224, 384, 96, 384, 64, 928, 128, 1344, 416, 864, 384, 832, 320, 288, 736, 160, 736, 256, 704, 544, 640, 288, 576, 544, 480, 1024, 720, 544, 704, 864, 640, 800, 640, 512, 640, 704, 128, 896, 192, 608, 768, 1280, 0, 1280, 64, 928, 64, 704, 32, 864, 608, 800, 448, 512, 704, 224, 608, 224, 576, 288, 704, 320, 736, 832, 384, 352, 96, 384, 224, 288, 128, 1344, 480, 256, 672, 96, 608, 544, 448, 384, 288, 560, 448, 352, 64, 96, 128, 288, 672 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 1, 0 ), PoolIntArray( 6, 0, 7, 8 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 13, 7, 0 ), PoolIntArray( 14, 15, 16, 17 ), PoolIntArray( 14, 17, 18, 19 ), PoolIntArray( 20, 21, 5, 4 ), PoolIntArray( 22, 0, 5 ), PoolIntArray( 23, 24, 25, 26 ), PoolIntArray( 22, 5, 27, 28 ), PoolIntArray( 29, 11, 10, 30, 31, 32, 33 ), PoolIntArray( 18, 17, 34, 35, 36 ), PoolIntArray( 37, 38, 39, 9 ), PoolIntArray( 40, 41, 39, 38, 42 ), PoolIntArray( 43, 44, 45, 46, 47 ), PoolIntArray( 48, 14, 19 ), PoolIntArray( 40, 42, 49, 50, 17 ), PoolIntArray( 17, 50, 34 ), PoolIntArray( 35, 34, 51 ), PoolIntArray( 39, 21, 20, 9 ), PoolIntArray( 52, 13, 0, 53, 54 ), PoolIntArray( 23, 26, 55, 56, 57 ), PoolIntArray( 10, 4, 3, 30 ), PoolIntArray( 32, 31, 58, 59, 60 ), PoolIntArray( 61, 60, 59 ), PoolIntArray( 26, 61, 59 ), PoolIntArray( 26, 59, 55 ), PoolIntArray( 56, 55, 62 ), PoolIntArray( 63, 64, 36, 35, 45, 44 ), PoolIntArray( 2, 1, 65, 58 ), PoolIntArray( 66, 67, 16 ), PoolIntArray( 68, 48, 63, 69 ), PoolIntArray( 63, 48, 19, 64 ), PoolIntArray( 70, 60, 61, 71 ), PoolIntArray( 72, 73, 74, 56, 62 ), PoolIntArray( 75, 72, 58, 65, 8, 76 ), PoolIntArray( 8, 7, 76 ), PoolIntArray( 75, 76, 52, 54 ), PoolIntArray( 35, 51, 77, 71, 25 ), PoolIntArray( 78, 46, 45, 79, 80 ), PoolIntArray( 50, 81, 29, 33, 70, 71, 77 ), PoolIntArray( 82, 54, 53, 28, 83 ), PoolIntArray( 35, 84, 57, 56, 85 ), PoolIntArray( 37, 9, 12, 49 ), PoolIntArray( 49, 12, 81, 50 ), PoolIntArray( 35, 25, 24 ), PoolIntArray( 35, 24, 86 ), PoolIntArray( 35, 86, 84 ), PoolIntArray( 85, 56, 80, 79 ), PoolIntArray( 87, 78, 80, 88, 27 ), PoolIntArray( 43, 47, 87, 27 ), PoolIntArray( 83, 73, 72, 89 ), PoolIntArray( 66, 16, 15 ), PoolIntArray( 66, 15, 68, 69 ), PoolIntArray( 27, 66, 69, 43 ), PoolIntArray( 28, 27, 88, 83 ), PoolIntArray( 89, 82, 83 ), PoolIntArray( 75, 89, 72 ), PoolIntArray( 58, 72, 59 ) ]
+outlines = [ PoolVector2Array( 96, 128, 288, 128, 288, 576, 224, 576, 224, 608, 96, 608 ), PoolVector2Array( 0, 0, 1280, 0, 1280, 64, 992, 64, 992, 320, 1312, 320, 1312, 288, 1600, 288, 1600, 896, 0, 896 ), PoolVector2Array( 448, 32, 704, 32, 704, 128, 448, 128 ), PoolVector2Array( 608, 448, 800, 448, 800, 640, 608, 640 ), PoolVector2Array( 1440, 864, 1440, 608, 1536, 608, 1536, 864 ), PoolVector2Array( 32, 864, 32, 736, 160, 736, 160, 864 ), PoolVector2Array( 384, 224, 384, 288, 416, 288, 416, 224 ), PoolVector2Array( 352, 64, 384, 64, 384, 96, 352, 96 ), PoolVector2Array( 928, 64, 960, 64, 960, 128, 928, 128 ), PoolVector2Array( 896, 192, 928, 192, 928, 224, 896, 224 ), PoolVector2Array( 832, 320, 864, 320, 864, 384, 832, 384 ), PoolVector2Array( 544, 448, 560, 448, 576, 448, 576, 480, 544, 480 ), PoolVector2Array( 512, 640, 544, 640, 544, 704, 512, 704 ), PoolVector2Array( 256, 672, 288, 672, 288, 704, 256, 704 ), PoolVector2Array( 288, 736, 320, 736, 320, 800, 288, 800 ), PoolVector2Array( 576, 768, 608, 768, 608, 800, 576, 800 ), PoolVector2Array( 864, 608, 896, 608, 896, 640, 864, 640 ), PoolVector2Array( 1024, 720, 1024, 704, 1056, 704, 1056, 768, 1024, 768 ), PoolVector2Array( 1344, 384, 1376, 384, 1376, 416, 1344, 416 ), PoolVector2Array( 1344, 480, 1376, 480, 1376, 544, 1344, 544 ) ]
 
 [node name="Motherboard" type="Node2D"]
 script = ExtResource( 5 )
@@ -55,6 +56,37 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Breakables" type="Node2D" parent="."]
+
+[node name="CPU" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 704, 544 )
+scale = Vector2( 0.73, 0.73 )
+chaos_type = 0
+
+[node name="HDD" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 192, 336 )
+scale = Vector2( 0.75, 1.5 )
+chaos_type = 3
+
+[node name="Memory_top" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 576, 78 )
+scale = Vector2( 0.9, 0.35 )
+chaos_type = 2
+
+[node name="GPU" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 1184, 190 )
+scale = Vector2( 1.39, 0.95 )
+
+[node name="Memory_right" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 1488, 736 )
+scale = Vector2( 0.4, 0.95 )
+chaos_type = 2
+
+[node name="PSU" parent="Breakables" instance=ExtResource( 10 )]
+position = Vector2( 96, 800 )
+scale = Vector2( 0.5, 0.5 )
+chaos_type = 4
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="store" parent="Node2D" instance=ExtResource( 9 )]
@@ -78,6 +110,13 @@ margin_bottom = 900.0
 [connection signal="body_exited" from="Node2D/store" to="Player" method="_on_store_body_exited"]
 [connection signal="body_entered" from="Node2D/store2" to="Player" method="_on_store_body_entered"]
 [connection signal="body_exited" from="Node2D/store2" to="Player" method="_on_store_body_exited"]
+[connection signal="repair_chaos" from="Player" to="." method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/CPU" method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/HDD" method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/Memory_top" method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/GPU" method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/Memory_right" method="_on_Player_repair_chaos"]
+[connection signal="repair_chaos" from="Player" to="Breakables/PSU" method="_on_Player_repair_chaos"]
 [connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]
 [connection signal="chaos_modified" from="ChaosController" to="Hud" method="_on_ChaosController_chaos_modified"]
 [connection signal="freeze_player" from="ChaosController" to="Player" method="_on_ChaosController_freeze_player"]

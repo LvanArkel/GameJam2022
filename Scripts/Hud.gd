@@ -50,7 +50,7 @@ func update_lives(lives):
 
 
 func _on_ChaosController_chaos_modified(states):
-	var durability_boxes = $Cols/row5.get_children()
+	var durability_boxes = $Cols/Row5.get_children()
 	for i in len(durability_boxes):
 		var vbox = durability_boxes[i]
 		var health = 100 - 20*(states[i])
