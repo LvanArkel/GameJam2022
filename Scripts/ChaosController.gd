@@ -19,6 +19,7 @@ func _ready():
 	randomize()
 
 func _input(event):
+	return
 	var just_pressed = event.is_pressed() and not event.is_echo()
 	if not just_pressed:
 		return
