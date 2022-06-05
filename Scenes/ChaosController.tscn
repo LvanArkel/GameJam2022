@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/ChaosController.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/ChaosMessage_fadeOut.tres" type="Animation" id=2]
 [ext_resource path="res://assets/materials/corrupt.tres" type="Material" id=3]
+[ext_resource path="res://assets/sound/debuff_hit1.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/debuff_hit2.mp3" type="AudioStream" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -116,5 +118,15 @@ anims/ChaosMessage_fadeOut = ExtResource( 2 )
 
 [node name="ChaosMessageTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DebuffSounds" type="Node" parent="."]
+
+[node name="DebuffSound1" type="AudioStreamPlayer2D" parent="DebuffSounds"]
+stream = ExtResource( 4 )
+bus = "environment"
+
+[node name="DebuffSound2" type="AudioStreamPlayer2D" parent="DebuffSounds"]
+stream = ExtResource( 5 )
+bus = "environment"
 
 [connection signal="timeout" from="ChaosMessageTimer" to="." method="_on_ChaosMessageTimer_timeout"]

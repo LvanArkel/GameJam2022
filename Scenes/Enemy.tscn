@@ -43,7 +43,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, 20 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Particles" type="CPUParticles2D" parent="."]
