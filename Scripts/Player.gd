@@ -144,7 +144,11 @@ func damage(amount):
 	if $Timer.is_stopped():
 		health -= amount
 		update_hud()
-		$Timer.start()
+		
+		if health <= 0:
+			die()
+		else:
+			$Timer.start()
 	
 func die():
 	print("Player died")
