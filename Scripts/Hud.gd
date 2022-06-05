@@ -47,3 +47,11 @@ func update_lives(lives):
 	elif lives < lives_on_hud:
 		for i in range(lives_on_hud - lives):
 			$Cols/Row1/Lives.get_children()[i].queue_free()
+
+
+func _on_ChaosController_chaos_modified(states):
+	var durability_boxes = $Cols/row5.get_children()
+	for i in len(durability_boxes):
+		var vbox = durability_boxes[i]
+		var health = 100 - 20*(states[i])
+		vbox.get_node("Durability").text = str(health)+"%"
