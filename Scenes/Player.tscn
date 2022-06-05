@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Weapons/Weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/sprites/test/test_repair_icon.png" type="Texture" id=17]
 [ext_resource path="res://assets/sound/shoot.mp3" type="AudioStream" id=18]
 [ext_resource path="res://assets/sound/damage.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/sound/shoot_shotgun.mp3" type="AudioStream" id=20]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -51,6 +52,8 @@ height = 36.0
 script = ExtResource( 2 )
 Bullet = ExtResource( 4 )
 Weapon = ExtResource( 1 )
+gunAudio = ExtResource( 18 )
+shotgunAudio = ExtResource( 20 )
 money = 40
 health = 3
 
@@ -59,6 +62,7 @@ position = Vector2( 0, 16 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 2 )
 animation = "Down"
+frame = 1
 playing = true
 
 [node name="WeaponSlot" type="Node2D" parent="."]
@@ -89,3 +93,6 @@ stream = ExtResource( 18 )
 
 [node name="DmgSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
+
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 20 )

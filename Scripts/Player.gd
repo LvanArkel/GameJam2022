@@ -11,6 +11,8 @@ var screen_size
 # other game objects
 var hud
 var weapons
+export (AudioStreamMP3) var gunAudio
+export (AudioStreamMP3) var shotgunAudio
 
 # variables
 var current_weapon
@@ -157,6 +159,10 @@ func die():
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
+	if current_weapon == 1:
+		$GunSound.stream = shotgunAudio
+	else:
+		$GunSound.stream = gunAudio
 	$GunSound.play()
 	
 
