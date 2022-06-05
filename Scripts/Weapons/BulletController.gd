@@ -2,7 +2,7 @@ extends Node2D
 
 const maxGameState = 4
 
-export (float) var totalSpeed
+export (float) var totalSpeed = 400
 
 var bullet_speed
 

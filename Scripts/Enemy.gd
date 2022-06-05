@@ -78,5 +78,5 @@ func take_damage(amount):
 
 
 func die():
-	$"/root/Main"._on_Enemy_enemy_death(position)
+	$"/root/Motherboard"._on_Enemy_enemy_death(position)
 	queue_free()
