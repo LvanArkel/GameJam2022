@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/start_miel.mp3-67a32df7246aa598359598993884e943.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/start_miel.mp3"
+dest_files=[ "res://.import/start_miel.mp3-67a32df7246aa598359598993884e943.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

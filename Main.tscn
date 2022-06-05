@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/UI/Loading.png" type="Texture" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/sound/gameover.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/fonts/HUD_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/HUD_GAME_OVER.tres" type="DynamicFont" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -49,6 +49,7 @@ autostart = true
 stream = ExtResource( 4 )
 
 [node name="DeathScreen" type="Control" parent="."]
+visible = false
 margin_right = 1600.0
 margin_bottom = 900.0
 
