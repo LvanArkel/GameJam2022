@@ -3,7 +3,7 @@ extends Node2D
 var health = 4
 export (int) var chaos_type = 1
 
-onready var chaos_controller = get_node("/root/Main/ChaosController")
+onready var chaos_controller = get_node("/root/Motherboard/ChaosController")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,30 +16,36 @@ func take_damage():
 		chaos_controller.trigger_chaos(chaos_type)
 
 func repair():
-	
+	health = 4
 	print("chaos_controller repair")
 
 
-func _on_CPU_Breakable_area_entered(area):
+func _on_Breakable_area_entered(area):
 	if area.is_in_group("Bullet"):
 		take_damage()
 		area.queue_free()
 
 
-func _on_CPU_Breakable_body_entered(body):
+func _on_Breakable_body_entered(body):
 	
 	if body.is_in_group("Player"):
-		print("Player entered")
 		var purchase_sprite = body.get_node("PurchaseSprite")
+		var repair_sprite = body.get_node("RepairSprite")
 		body.can_buy = true
 		body.chaos_repair_type = chaos_type
 		body.buy_type = "chaos"
 		purchase_sprite.visible = true
+		repair_sprite.visible = true
 
 
-func _on_CPU_Breakable_body_exited(body):
+func _on_Breakable_body_exited(body):
 	if body.is_in_group("Player"):
-		print("Player exited")
 		var purchase_sprite = body.get_node("PurchaseSprite")
+		var repair_sprite = body.get_node("RepairSprite")
 		body.can_buy = false
 		purchase_sprite.visible = false
+		repair_sprite.visible = false
+
+
+func _on_Player_repair_chaos(chaos_type):
+	repair()
