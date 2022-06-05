@@ -1,20 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/virus_greyscale_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/virus_greyscale_2.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/virus_greyscale_3.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/virus_greyscale_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/trojan1.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/trojan2.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 20.0
-height = 46.0
+radius = 35.0
+height = 28.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Trojan",
 "speed": 5.0
 } ]
 
@@ -36,7 +43,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, 20 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Particles" type="CPUParticles2D" parent="."]
