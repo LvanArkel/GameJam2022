@@ -64,7 +64,6 @@ position = Vector2( 0, 16 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 2 )
 animation = "Down"
-frame = 1
 playing = true
 
 [node name="WeaponSlot" type="Node2D" parent="."]
@@ -92,15 +91,20 @@ texture = ExtResource( 17 )
 
 [node name="GunSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 18 )
+bus = "Player"
 
 [node name="DmgSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
+bus = "Player"
 
 [node name="ShotgunSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 20 )
+bus = "Player"
 
 [node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 21 )
+bus = "Player"
 
 [node name="BuySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 22 )
+bus = "Player"
