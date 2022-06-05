@@ -15,7 +15,8 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var c = Color(randf(), randf(), randf())
+	randomize()
+	var c = Color.from_hsv(randf(), 1, 1)
 	$Sprite.modulate = c
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
