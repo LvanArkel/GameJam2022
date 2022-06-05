@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/UI/MIEL_Logo.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/UI/Loading.png" type="Texture" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://assets/sound/gameover.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/fonts/HUD_font.tres" type="DynamicFont" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -48,21 +49,34 @@ autostart = true
 stream = ExtResource( 4 )
 
 [node name="DeathScreen" type="Control" parent="."]
-visible = false
 margin_right = 1600.0
 margin_bottom = 900.0
 
+[node name="ColorRect" type="ColorRect" parent="DeathScreen"]
+margin_right = 1600.0
+margin_bottom = 900.0
+color = Color( 0.337255, 0.0823529, 0.0823529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="DeathScreen"]
-margin_left = 700.0
-margin_top = 450.0
-margin_right = 900.0
-margin_bottom = 470.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = 68.0
+margin_right = 150.0
+margin_bottom = 128.0
+custom_fonts/font = ExtResource( 5 )
 text = "Restart"
 
 [node name="Label" type="Label" parent="DeathScreen"]
 margin_right = 400.0
 margin_bottom = 150.0
 rect_scale = Vector2( 4, 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Game Over!"
 align = 1
 valign = 1
@@ -76,6 +90,7 @@ margin_top = 120.0
 margin_right = 800.0
 margin_bottom = 420.0
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 5 )
 text = "Try again?"
 align = 1
 valign = 1
