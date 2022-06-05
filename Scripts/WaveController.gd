@@ -23,9 +23,9 @@ var trojan_scene = load("res://Scenes/Trojan.tscn")
 func _ready():
 	get_positions()
 	enemies_alive = starting_enemies
-	waves.append(wave_class.new(5, 1, 0))
+	waves.append(wave_class.new(5, 0, 0))
 	waves.append(wave_class.new(8, 0, 0))
-	waves.append(wave_class.new(5, 3, 0))
+	waves.append(wave_class.new(8, 1, 0))
 	waves.append(wave_class.new(10, 3, 0))
 	waves.append(wave_class.new(15, 5, 0))
 	waves.append(wave_class.new(20, 8, 0))
