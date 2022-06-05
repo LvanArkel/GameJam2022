@@ -22,6 +22,7 @@ func restart():
 	$DeathScreen.visible = false
 	$SplashScreen.visible = true
 	$StartTimer.start()
+	$StartSound.play()
 
 
 func _on_StartTimer_timeout():

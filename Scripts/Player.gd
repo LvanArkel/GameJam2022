@@ -109,6 +109,7 @@ func _input(event):
 			money -= 10
 			if buy_type == "ammo":
 				weapons[current_weapon].ammo += 10
+				$BuySound.play()
 			elif buy_type == "chaos":
 				print("repair chaos")
 				emit_signal("repair_chaos", chaos_repair_type)
@@ -136,6 +137,7 @@ func shoot(amount, spread):
 func pickup_coin(value):
 	money += value
 	update_hud()
+	$CoinSound.play()
 	
 func update_hud():
 	if hud == null:
