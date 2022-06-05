@@ -5,19 +5,15 @@ var Coin = load("res://Scenes/Coin.tscn")
 func _ready():
 	$Player.hud = $Hud
 	$Player.update_hud()
+	init_chaos_controller()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#$DebugHud/Labels/WeaponCooldown.text = str($Player/WeaponSlot/Weapon/Cooldown.time_left)
-	#DebugHud/Labels/PistolAmmo.text = "Pistol: " + str($Player.weapons[0].ammo)
-	#$DebugHud/Labels/ShotgunAmmo.text = "Shotgun: " + str($Player.weapons[1].ammo)
-	#$DebugHud/Labels/RifleAmmo.text = "Rifle: " + str($Player.weapons[2].ammo)
-	pass
+func init_chaos_controller():
+	$ChaosController.player_sprite = $Player/Sprite
 
 
 func _on_Player_spawn_bullet(bullets):
 	for bullet in bullets:
-		bullet.bullet_speed = $Bullets.get_bullet_speed()
+		bullet.bullet_speed = $Bullets.bullet_speed
 		$Bullets.add_child(bullet)
 
 func spawn_coin(position):

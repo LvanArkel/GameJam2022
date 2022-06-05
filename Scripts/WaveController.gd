@@ -1,6 +1,7 @@
 extends Node2D
 
 signal next_wave(wave_number, enemies_left)
+signal spawn_enemy(enemy)
 
 export (int) var max_enemies = 8
 export (int) var starting_enemies = 0
@@ -57,8 +58,7 @@ func spawn():
 		var enemy = enemy_scene.instance()
 		enemy.position = position
 		enemies_left -= 1
-		
-		enemy_node.add_child(enemy)
+		emit_signal("spawn_enemy", enemy)
 	else:
 		print("Wave done")
 		next_wave()

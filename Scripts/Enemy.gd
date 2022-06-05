@@ -18,6 +18,7 @@ func _ready():
 	randomize()
 	var c = Color.from_hsv(randf(), 1, 1)
 	$Sprite.modulate = c
+	$Particles.color = c
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
