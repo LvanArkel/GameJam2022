@@ -7,8 +7,10 @@ export (int) var damage = 1
 
 var texture_scale
 
-onready var nav: Navigation2D = get_tree().current_scene.get_node("NavMesh")
+var nav: Navigation2D
 onready var player = get_node(@"../../Player")
+
+signal enemy_death(position)
 
 var line
 var path = []
@@ -78,5 +80,5 @@ func take_damage(amount):
 
 
 func die():
-	$"/root/Motherboard"._on_Enemy_enemy_death(position)
+	emit_signal("enemy_death", position)
 	queue_free()

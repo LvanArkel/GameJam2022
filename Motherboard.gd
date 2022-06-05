@@ -6,6 +6,9 @@ func _ready():
 	$Player.hud = $Hud
 	$Player.update_hud()
 	init_chaos_controller()
+	$Enemies.nav_mesh = $NavMesh
+	for child in $Breakables.get_children():
+		child.chaos_controller = $ChaosController
 
 func init_chaos_controller():
 	$ChaosController.player_sprite = $Player/Sprite

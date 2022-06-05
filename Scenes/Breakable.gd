@@ -3,7 +3,7 @@ extends Node2D
 var health = 4
 export (int) var chaos_type = 1
 
-onready var chaos_controller = get_node("/root/Motherboard/ChaosController")
+var chaos_controller
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
