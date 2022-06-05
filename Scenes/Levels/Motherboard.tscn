@@ -118,6 +118,7 @@ margin_bottom = 900.0
 [connection signal="repair_chaos" from="Player" to="Breakables/Memory_right" method="_on_Player_repair_chaos"]
 [connection signal="repair_chaos" from="Player" to="Breakables/PSU" method="_on_Player_repair_chaos"]
 [connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]
+[connection signal="chaos_modified" from="ChaosController" to="Hud" method="_on_ChaosController_chaos_modified"]
 [connection signal="freeze_player" from="ChaosController" to="Player" method="_on_ChaosController_freeze_player"]
 [connection signal="increase_bullet_time" from="ChaosController" to="Bullets" method="_on_ChaosController_increase_bullet_time"]
 [connection signal="remove_data" from="ChaosController" to="Player" method="_on_ChaosController_remove_data"]

@@ -10,6 +10,7 @@ signal increase_bullet_time(chaos_state)
 signal remove_data(type, amount)
 signal update_enemy_texture(material, visible)
 signal freeze_player(duration)
+signal chaos_modified(states)
 
 var player_sprite
 
@@ -60,6 +61,8 @@ func trigger_chaos(type):
 		freeze_input()
 	$AnimationPlayer.play("ChaosMessage_fadeIn")
 	$ChaosMessageTimer.start(1.5)
+	emit_signal("chaos_modified", chaos_states)
+	
 
 func repair_chaos(type):
 	if type == 0:
@@ -81,6 +84,7 @@ func repair_chaos(type):
 	chaos_states[type] = 0
 	$AnimationPlayer.play("ChaosMessage_fadeIn")
 	$ChaosMessageTimer.start(1.5)
+	emit_signal("chaos_modified", chaos_states)
 
 func set_chaos_message(title, content):
 	$MessageBox/ChaosMessage/ChaosTitle.text = title
