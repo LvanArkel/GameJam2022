@@ -4,6 +4,9 @@ extends Node2D
 var enemy_material
 var enemy_visible = true
 
+func _ready():
+	randomize()
+
 func update_enemy(enemy):
 	enemy.get_node("Sprite").material = enemy_material
 	enemy.get_node("Sprite").visible = enemy_visible

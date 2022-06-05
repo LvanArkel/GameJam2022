@@ -12,7 +12,7 @@ var enemies_alive = 0
 var waves = []
 		
 var wave_class = load("res://Scripts/Wave.gd")
-var enemy_scene = load("res://Scenes/Trojan.tscn")
+var enemy_scene = load("res://Scenes/Enemy.tscn")
 
 onready var enemy_node = get_node("/root/Main/Enemies")
 

@@ -17,7 +17,10 @@ var player_sprite
 func _ready():
 	randomize()
 
-func _input(evt):
+func _input(event):
+	var just_pressed = event.is_pressed() and not event.is_echo()
+	if not just_pressed:
+		return
 	if Input.is_key_pressed(KEY_1):
 		trigger_chaos(0)
 	elif Input.is_key_pressed(KEY_2):
