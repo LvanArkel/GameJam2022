@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -110,9 +110,9 @@ format = 1
 [node name="ChaosController" parent="." instance=ExtResource( 8 )]
 
 [connection signal="next_wave" from="WaveController" to="." method="_on_WaveController_next_wave"]
+[connection signal="spawn_enemy" from="WaveController" to="Enemies" method="_on_WaveController_spawn_enemy"]
 [connection signal="area_entered" from="CPU_Breakable" to="Bullets" method="_on_CPU_Breakable_area_entered"]
 [connection signal="area_entered" from="CPU_Breakable" to="CPU_Breakable" method="_on_CPU_Breakable_area_entered"]
-[connection signal="spawn_enemy" from="WaveController" to="Enemies" method="_on_WaveController_spawn_enemy"]
 [connection signal="body_entered" from="Stores/store" to="Player" method="_on_store_body_entered"]
 [connection signal="body_exited" from="Stores/store" to="Player" method="_on_store_body_exited"]
 [connection signal="repair_chaos" from="Player" to="." method="_on_Player_repair_chaos"]

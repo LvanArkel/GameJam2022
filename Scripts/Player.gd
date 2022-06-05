@@ -157,6 +157,7 @@ func _on_Weapon_fire_weapon(amount, spread):
 func _on_store_body_entered(body):
 	if body.is_in_group("Player"):
 		can_buy = true
+		buy_type = "ammo"
 		$PurchaseSprite.visible = can_buy
 
 

@@ -40,4 +40,4 @@ func _on_WaveController_next_wave(wave_number, enemies_left):
 
 
 func _on_Player_repair_chaos(chaos_type):
-	print("repairing " + str(chaos_type))
+	$ChaosController.repair_chaos(chaos_type)
