@@ -61,7 +61,7 @@ func get_positions():
 	var children = get_children()
 	
 	for child in children:
-		if child.name != "SpawnTimer":
+		if child.name != "SpawnTimer" && child.name != "WaveTimer":
 			positions.append(child.position)
 
 func spawn():

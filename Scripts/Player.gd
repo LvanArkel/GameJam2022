@@ -22,6 +22,7 @@ export (int) var health
 
 var enemies_left
 var wave
+var score = 0
 
 # signals
 signal spawn_bullet(bullet)
@@ -152,7 +153,8 @@ func damage(amount):
 	
 func die():
 	print("Player died")
-	var main = $"/root/Main".show_death_screen()
+	score += wave * 100
+	var main = $"/root/Main".show_death_screen(score)
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)
