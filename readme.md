@@ -1,3 +1,5 @@
+To play, simply run the .exe file
+
 # Controls:
 - WASD to Move around
 - Mouse to aim
