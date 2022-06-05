@@ -31,3 +31,4 @@ func update_bullets():
 
 func _on_ChaosController_increase_bullet_time():
 	increment_game_state()
+

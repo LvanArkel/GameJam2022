@@ -41,3 +41,7 @@ func _on_WaveController_next_wave(wave_number, enemies_left):
 	$Player.wave = wave_number
 	$Player.enemies_left = enemies_left
 	$Player.update_hud()
+
+
+func _on_Player_repair_chaos(chaos_type):
+	print("repairing " + str(chaos_type))
