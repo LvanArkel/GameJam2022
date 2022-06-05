@@ -22,7 +22,7 @@ func _on_Player_spawn_bullet(bullets):
 func spawn_coin(position):
 	var rand = randi() % 10
 	
-	if rand < 3:
+	if rand < 4:
 		var coin = Coin.instance()
 		coin.position = position
 		add_child(coin)
