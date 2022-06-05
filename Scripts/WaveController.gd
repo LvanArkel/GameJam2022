@@ -12,9 +12,7 @@ var enemies_alive = 0
 var waves = []
 		
 var wave_class = load("res://Scripts/Wave.gd")
-var enemy_scene = load("res://Scenes/Enemy.tscn")
-
-onready var enemy_node = get_node("/root/Main/Enemies")
+var enemy_scene = load("res://Scenes/Trojan.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,7 +39,6 @@ func next_wave():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var child = enemy_node.get_child_count()
 	
 	if $SpawnTimer.is_stopped():
 		#TIME TO SPAWN
