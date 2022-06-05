@@ -112,6 +112,7 @@ func _input(event):
 				$BuySound.play()
 			elif buy_type == "chaos":
 				print("repair chaos")
+				$RepairSound.play()
 				emit_signal("repair_chaos", chaos_repair_type)
 			update_hud()
 

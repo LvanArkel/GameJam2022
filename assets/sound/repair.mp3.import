@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/repair.mp3-8294b74f4ab12548a4af0f24f73f1c4f.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/repair.mp3"
+dest_files=[ "res://.import/repair.mp3-8294b74f4ab12548a4af0f24f73f1c4f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
