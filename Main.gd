@@ -6,9 +6,10 @@ onready var level = load("res://Scenes/Levels/Motherboard.tscn")
 func _ready():
 	pass # Replace with function body.
 
-func show_death_screen():
+func show_death_screen(score):
 	$SplashScreen.visible = false
 	$Level.get_child(0).queue_free()
+	$DeathScreen/BottomText.text = "Score: " + str(score)
 	$DeathScreen.visible = true
 	
 	

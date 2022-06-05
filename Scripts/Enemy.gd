@@ -5,12 +5,14 @@ export (int) var health = 3
 export (int) var attack_length = 100
 export (int) var damage = 1
 
+var MAX_HEALTH
+
 var texture_scale
 
 var nav: Navigation2D
 onready var player = get_node(@"../../Player")
 
-signal enemy_death(position)
+signal enemy_death(position, health)
 
 var line
 var path = []
@@ -18,6 +20,7 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MAX_HEALTH = health
 	randomize()
 	var c = Color.from_hsv(randf(), 1, 1)
 	$Sprite.modulate = c
@@ -80,5 +83,5 @@ func take_damage(amount):
 
 
 func die():
-	emit_signal("enemy_death", position)
+	emit_signal("enemy_death", position, MAX_HEALTH)
 	queue_free()

@@ -57,7 +57,7 @@ margin_left = 700.0
 margin_top = 450.0
 margin_right = 900.0
 margin_bottom = 470.0
-text = "Restart"
+text = "Try again?"
 
 [node name="Label" type="Label" parent="DeathScreen"]
 margin_right = 400.0
@@ -76,7 +76,7 @@ margin_top = 120.0
 margin_right = 800.0
 margin_bottom = 420.0
 rect_scale = Vector2( 2, 2 )
-text = "Try again?"
+text = "Score: 44"
 align = 1
 valign = 1
 max_lines_visible = 1

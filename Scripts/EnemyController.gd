@@ -25,6 +25,5 @@ func _on_WaveController_spawn_enemy(enemy):
 	enemy.nav = nav_mesh
 	enemy.connect("enemy_death", get_parent(), "_on_Enemy_enemy_death")
 	update_enemy(enemy)	
-	#enemy.connect("")
 	add_child(enemy)
 	
