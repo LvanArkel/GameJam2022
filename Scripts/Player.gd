@@ -144,12 +144,16 @@ func damage(amount):
 	if $Timer.is_stopped():
 		health -= amount
 		update_hud()
-		$DmgSound.play()
-		$Timer.start()
+		
+		if health <= 0:
+			die()
+		else:
+			$DmgSound.play()
+			$Timer.start()
 	
 func die():
 	print("Player died")
-	pass
+	var main = $"/root/Main".show_death_screen()
 
 func _on_Weapon_fire_weapon(amount, spread):
 	shoot(amount, spread)

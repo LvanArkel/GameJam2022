@@ -32,6 +32,18 @@ tile_data = PoolIntArray( 13, 11, 0, 65566, 1, 0, 131083, 10, 0, 131101, 9, 0, 1
 
 [node name="WaveController" parent="." instance=ExtResource( 6 )]
 
+[node name="SpawnPosition1" type="Node2D" parent="WaveController"]
+position = Vector2( 801, -96 )
+
+[node name="SpawnPosition2" type="Node2D" parent="WaveController"]
+position = Vector2( -128, 434 )
+
+[node name="SpawnPosition3" type="Node2D" parent="WaveController"]
+position = Vector2( 1664, 480 )
+
+[node name="SpawnPosition4" type="Node2D" parent="WaveController"]
+position = Vector2( 788, 960 )
+
 [node name="Bullets" type="Node2D" parent="."]
 script = ExtResource( 7 )
 __meta__ = {
@@ -40,6 +52,7 @@ __meta__ = {
 
 [node name="NavMesh" type="Navigation2D" parent="."]
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -58,6 +71,9 @@ __meta__ = {
 }
 
 [node name="Breakables" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CPU" parent="Breakables" instance=ExtResource( 10 )]
 position = Vector2( 704, 544 )
@@ -89,6 +105,9 @@ scale = Vector2( 0.5, 0.5 )
 chaos_type = 4
 
 [node name="Node2D" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="store" parent="Node2D" instance=ExtResource( 9 )]
 position = Vector2( 96, 608 )
