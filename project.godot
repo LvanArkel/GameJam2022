@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gamejam2022"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/Levels/Motherboard.tscn"
 config/icon="res://icon.png"
 <<<<<<<HEADrun/main_scene="res://Scenes/Test.tscn"
 

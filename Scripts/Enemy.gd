@@ -7,7 +7,7 @@ export (int) var damage = 1
 
 var texture_scale
 
-onready var nav: Navigation2D = get_node(@"/root/Main/NavMesh")
+onready var nav: Navigation2D = get_tree().current_scene.get_node("NavMesh")
 onready var player = get_node(@"../../Player")
 
 var line

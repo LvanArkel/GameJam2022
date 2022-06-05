@@ -10,9 +10,9 @@ var current_wave = 0
 var enemies_left = 0
 var enemies_alive = 0
 var waves = []
-		
+
 var wave_class = load("res://Scripts/Wave.gd")
-var enemy_scene = load("res://Scenes/Trojan.tscn")
+var enemy_scene = load("res://Scenes/Enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
