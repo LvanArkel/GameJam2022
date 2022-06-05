@@ -27,6 +27,8 @@ func _on_Breakable_area_entered(area):
 
 
 func _on_Breakable_body_entered(body):
+	if health == 4:
+		return
 	
 	if body.is_in_group("Player"):
 		var purchase_sprite = body.get_node("PurchaseSprite")
