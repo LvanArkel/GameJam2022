@@ -15,6 +15,8 @@ var weapons
 # variables
 var current_weapon
 var can_buy
+var buy_type = "ammo"
+var chaos_repair_type = 0
 export (int) var money
 export (int) var health
 
@@ -23,6 +25,7 @@ var wave
 
 # signals
 signal spawn_bullet(bullet)
+signal repair_chaos(chaos_type)
 
 func _ready():
 	randomize()
@@ -101,7 +104,10 @@ func _input(event):
 	elif event.is_action_pressed("interact"):
 		if can_buy and money >= 10:
 			money -= 10
-			weapons[current_weapon].ammo += 10
+			if buy_type == "ammo":
+				weapons[current_weapon].ammo += 10
+			elif buy_type == "chaos":
+				emit_signal("repair_chaos", chaos_repair_type)
 			update_hud()
 
 func switch_weapon(delta):
@@ -151,6 +157,7 @@ func _on_Weapon_fire_weapon(amount, spread):
 func _on_store_body_entered(body):
 	if body.is_in_group("Player"):
 		can_buy = true
+		buy_type = "ammo"
 		$PurchaseSprite.visible = can_buy
 
 
