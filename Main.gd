@@ -32,3 +32,7 @@ func _on_StartTimer_timeout():
 
 func _on_Button_button_down():
 	restart()
+
+
+func _on_QuitButton_button_down():
+	get_tree().quit()
