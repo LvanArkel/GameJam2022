@@ -66,7 +66,6 @@ rect_scale = Vector2( 4, 4 )
 text = "Game Over!"
 align = 1
 valign = 1
-percent_visible = -0.111111
 max_lines_visible = 1
 __meta__ = {
 "_edit_lock_": true
