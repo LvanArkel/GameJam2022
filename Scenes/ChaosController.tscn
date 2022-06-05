@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/ChaosController.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/ChaosMessage_fadeOut.tres" type="Animation" id=2]
+[ext_resource path="res://assets/materials/corrupt.tres" type="Material" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -44,6 +45,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+CorruptMaterial = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

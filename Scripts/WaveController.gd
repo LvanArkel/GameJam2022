@@ -1,6 +1,7 @@
 extends Node2D
 
 signal next_wave(wave_number, enemies_left)
+signal spawn_enemy(enemy)
 
 export (int) var max_enemies = 8
 export (int) var starting_enemies = 0
@@ -11,9 +12,7 @@ var enemies_alive = 0
 var waves = []
 		
 var wave_class = load("res://Scripts/Wave.gd")
-var enemy_scene = load("res://Scenes/Enemy.tscn")
-
-onready var enemy_node = get_node("/root/Main/Enemies")
+var enemy_scene = load("res://Scenes/Trojan.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,7 +39,6 @@ func next_wave():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var child = enemy_node.get_child_count()
 	
 	if $SpawnTimer.is_stopped():
 		#TIME TO SPAWN
@@ -57,8 +55,7 @@ func spawn():
 		var enemy = enemy_scene.instance()
 		enemy.position = position
 		enemies_left -= 1
-		
-		enemy_node.add_child(enemy)
+		emit_signal("spawn_enemy", enemy)
 	else:
 		print("Wave done")
 		next_wave()

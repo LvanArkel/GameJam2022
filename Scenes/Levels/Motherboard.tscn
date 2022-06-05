@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/ChaosController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Hud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/EnemyController.gd" type="Script" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/WaveController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Weapons/BulletController.gd" type="Script" id=7]
+[ext_resource path="res://assets/tilemaps/level1_tileset.tres" type="TileSet" id=8]
+[ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=9]
+
+[node name="Motherboard" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.207843, 0.341176, 0.0196078, 1 )
+polygon = PoolVector2Array( 0, 0, 1600, 0, 1600, 896, 0, 896 )
+
+[node name="NavMesh" type="Navigation2D" parent="Polygon2D"]
+
+[node name="NavPoly" type="NavigationPolygonInstance" parent="Polygon2D/NavMesh"]
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 13, 2, 0, 65566, 1, 0, 196610, -1610612728, 0, 327694, 0, 0, 327695, -1073741819, 0, 327696, 0, 0, 327697, -1073741819, 0, 327698, -1610612731, 0, 327699, -1073741824, 0, 327700, -1610612731, 0, 327701, -1073741824, 0, 393231, 0, 0, 393232, 1610612736, 0, 393233, 1610612739, 0, 393234, 1610612739, 0, 393235, -1610612736, 0, 393236, -1073741824, 0, 458768, 1610612739, 0, 458769, 1610612739, 0, 458770, 1610612739, 0, 458771, 1610612739, 0, 524304, 1610612739, 0, 524305, 1610612739, 0, 524306, 1610612739, 0, 524307, 1610612739, 0, 589840, 1610612739, 0, 589841, 1610612739, 0, 589842, 1610612739, 0, 589843, 0, 0, 589844, -1610612733, 0, 589845, -1610612733, 0, 589846, -1610612733, 0, 589847, 1610612736, 0, 655376, 1610612739, 0, 655377, 1610612739, 0, 655378, 0, 0, 655379, -1610612733, 0, 655380, -1610612733, 0, 655381, -1610612733, 0, 655382, 1610612736, 0, 655383, 1610612739, 0, 720912, 1610612739, 0, 720913, 0, 0, 720914, -1610612733, 0, 720915, -1610612733, 0, 720916, -1610612733, 0, 720917, 1610612736, 0, 720918, 1610612739, 0, 720919, 1610612739, 0, 720928, 3, 0, 720929, 3, 0, 720930, 3, 0, 720931, 3, 0, 720932, 3, 0, 720933, 3, 0, 720934, 3, 0, 720935, 3, 0, 786448, 0, 0, 786449, -1610612733, 0, 786450, -1610612733, 0, 786451, -1610612733, 0, 786452, 1610612736, 0, 786453, 1610612739, 0, 786454, 1610612739, 0, 786455, 1610612739, 0, 786464, 3, 0, 786465, 3, 0, 786466, 3, 0, 786467, 3, 0, 786468, 3, 0, 786469, 3, 0, 786470, 3, 0, 786471, 3, 0, 851986, 7, 0, 851988, 1610612739, 0, 851989, 1610612739, 0, 851990, 1610612739, 0, 851991, 1610612739, 0, 852000, 3, 0, 852001, 3, 0, 852002, 3, 0, 852003, 3, 0, 852004, 3, 0, 852005, 3, 0, 852006, 3, 0, 852007, 3, 0, 917536, 3, 0, 917537, 3, 0, 917538, 3, 0, 917539, 3, 0, 917540, 3, 0, 917541, 3, 0, 917542, 3, 0, 917543, 3, 0, 983065, -1610612733, 0, 983066, -1610612733, 0, 983067, -1610612733, 0, 983068, -1610612733, 0, 983069, -1610612733, 0, 983070, -1610612733, 0, 983071, -1610612733, 0, 983072, 5, 0, 983073, -1073741824, 0, 983074, 3, 0, 983075, 3, 0, 983076, 3, 0, 983077, 3, 0, 983078, 3, 0, 983079, 3, 0, 1048601, -1610612733, 0, 1048602, -1610612733, 0, 1048603, -1610612733, 0, 1048604, -1610612733, 0, 1048605, -1610612733, 0, 1048606, -1610612733, 0, 1048607, -1610612733, 0, 1048608, -1610612733, 0, 1048609, -1610612733, 0, 1048610, 5, 0, 1048611, -1073741824, 0, 1048612, 3, 0, 1048613, 3, 0, 1048614, 3, 0, 1048615, 3, 0, 1048620, -1610612734, 0, 1114137, -1610612733, 0, 1114138, -1610612733, 0, 1114139, -1610612733, 0, 1114140, -1610612733, 0, 1114141, -1610612733, 0, 1114142, -1610612733, 0, 1114143, -1610612733, 0, 1114144, -1610612733, 0, 1114145, -1610612733, 0, 1114146, -1610612733, 0, 1114147, -1610612733, 0, 1114148, 5, 0, 1114149, -1073741824, 0, 1114150, 3, 0, 1114151, 3, 0, 1179673, -1610612733, 0, 1179674, -1610612733, 0, 1179675, -1610612733, 0, 1179676, -1610612733, 0, 1179677, -1610612733, 0, 1179678, -1610612733, 0, 1179679, -1610612733, 0, 1179680, -1610612733, 0, 1179681, -1610612733, 0, 1179682, -1610612733, 0, 1179683, -1610612733, 0, 1179684, -1610612733, 0, 1179685, -1610612733, 0, 1179686, 5, 0, 1179687, -1073741824, 0, 1507329, 6, 0 )
+
+[node name="WaveController" parent="." instance=ExtResource( 6 )]
+
+[node name="Bullets" type="Node2D" parent="."]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Coins" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="store" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 96, 608 )
+
+[node name="store2" parent="Node2D" instance=ExtResource( 9 )]
+position = Vector2( 1408, 288 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 833, 80 )
+
+[node name="Hud" parent="." instance=ExtResource( 3 )]
+margin_right = 1600.0
+margin_bottom = 900.0
+
+[node name="ChaosController" parent="." instance=ExtResource( 1 )]
+
+[connection signal="next_wave" from="WaveController" to="." method="_on_WaveController_next_wave"]
+[connection signal="spawn_enemy" from="WaveController" to="Enemies" method="_on_WaveController_spawn_enemy"]
+[connection signal="spawn_bullet" from="Player" to="." method="_on_Player_spawn_bullet"]
+[connection signal="freeze_player" from="ChaosController" to="Player" method="_on_ChaosController_freeze_player"]
+[connection signal="increase_bullet_time" from="ChaosController" to="Bullets" method="_on_ChaosController_increase_bullet_time"]
+[connection signal="remove_data" from="ChaosController" to="Player" method="_on_ChaosController_remove_data"]
+[connection signal="update_enemy_texture" from="ChaosController" to="Enemies" method="_on_ChaosController_update_enemy_texture"]

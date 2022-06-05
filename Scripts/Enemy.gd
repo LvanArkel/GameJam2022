@@ -5,6 +5,7 @@ export (int) var health = 3
 export (int) var attack_length = 100
 export (int) var damage = 1
 
+var texture_scale
 
 onready var nav: Navigation2D = get_node(@"/root/Main/NavMesh")
 onready var player = get_node(@"../../Player")
@@ -15,8 +16,11 @@ var line_path = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var c = Color(randf(), randf(), randf())
+	randomize()
+	var c = Color.from_hsv(randf(), 1, 1)
 	$Sprite.modulate = c
+	$Particles.color = c
+	texture_scale = $Sprite.scale.x
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,7 +47,11 @@ func move_along_path(distance):
 
 		# The position to move to falls between two points.
 		if distance <= distance_between_points:
+			var old_pos = position
 			position = last_point.linear_interpolate(path[0], distance / distance_between_points)
+			var delta_pos = position - old_pos
+			var delta_pos_sign = sign(delta_pos.x)
+			$Sprite.scale.x = (delta_pos_sign if delta_pos_sign != 0 else 1)*texture_scale
 			return
 		# The position is past the end of the segment.
 		distance -= distance_between_points

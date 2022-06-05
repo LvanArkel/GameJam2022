@@ -14,7 +14,7 @@ func _ready():
 
 
 func update_player_info(money, lives, active_weapon, ammos, wave, enemies_left):
-	$Cols/Row1/Money.text = "$"+str(money)
+	$Cols/Row1/Money.text = ": "+str(money)
 	update_lives(lives)
 	if active_weapon == 0:
 		$Cols/Row2/PistolAmmoImage.modulate = Color(1,1,1)

@@ -71,14 +71,15 @@ func _process(delta):
 func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.	
 	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += speed
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= speed
-	if Input.is_action_pressed("move_down"):
-		velocity.y += speed
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= speed
+	if $FreezeCooldown.is_stopped():
+		if Input.is_action_pressed("move_right"):
+			velocity.x += speed
+		if Input.is_action_pressed("move_left"):
+			velocity.x -= speed
+		if Input.is_action_pressed("move_down"):
+			velocity.y += speed
+		if Input.is_action_pressed("move_up"):
+			velocity.y -= speed
 	
 	if velocity != Vector2.ZERO:
 		$Sprite.playing = true
@@ -94,6 +95,8 @@ func _on_Player_body_entered(body):
 	$CollisionShape.set_deferred("disabled", true)
 
 func _input(event):
+	if not $FreezeCooldown.is_stopped():
+		return
 	if event.is_action_pressed("scroll_forward"):
 		switch_weapon(1)
 	elif event.is_action_pressed("scroll_backward"):
@@ -170,3 +173,7 @@ func _on_ChaosController_remove_data(type, amount):
 	else:
 		weapons[type].ammo = max(0, weapons[type].ammo-amount)
 	update_hud()
+
+
+func _on_ChaosController_freeze_player(duration):
+	$FreezeCooldown.start(duration)
