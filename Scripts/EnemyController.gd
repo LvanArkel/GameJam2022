@@ -4,6 +4,8 @@ extends Node2D
 var enemy_material
 var enemy_visible = true
 
+var nav_mesh
+
 func _ready():
 	randomize()
 
@@ -20,6 +22,8 @@ func _on_ChaosController_update_enemy_texture(e_material, e_visible):
 
 
 func _on_WaveController_spawn_enemy(enemy):
+	enemy.nav = nav_mesh
+	enemy.connect("enemy_death", get_parent(), "_on_Enemy_enemy_death")
 	update_enemy(enemy)	
 	#enemy.connect("")
 	add_child(enemy)

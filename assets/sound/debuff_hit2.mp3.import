@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/debuff_hit2.mp3-2b234780027b540569fecd8e8368aff6.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/debuff_hit2.mp3"
+dest_files=[ "res://.import/debuff_hit2.mp3-2b234780027b540569fecd8e8368aff6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
