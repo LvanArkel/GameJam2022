@@ -28,12 +28,13 @@ func spawn_coin(position):
 		add_child(coin)
 
 
-func _on_Enemy_enemy_death(pos):
+func _on_Enemy_enemy_death(pos, health):
 	print($Player)
 	$EnemyDeathSound.position = pos
 	$EnemyDeathSound.play()
 	spawn_coin(pos)
 	$Player.enemies_left -= 1
+	$Player.score += health * 10
 	$Player.update_hud()
 
 
